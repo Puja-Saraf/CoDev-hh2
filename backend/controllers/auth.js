@@ -34,7 +34,7 @@ const authController = {
 
   signup: async (req, res) => {
     const { email, password } = req.body;
-    console.log(email, password);
+    // console.log(email, password);
     const generatedUserId = uuidv4();
     const hashed_password = await bcrypt.hash(password, 10);
     try {
