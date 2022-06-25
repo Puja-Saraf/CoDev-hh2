@@ -43,7 +43,7 @@ export default function EditProfile({user}) {
     }
     try{
       const res=await axios.put("http://localhost:8000/users/user", {formData: newOb},{params})
-      console.log(res)
+      // console.log(res)
       navigate('/profile');
       window.location.reload();
     }

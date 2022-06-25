@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import LandingPage from './pages/LandingPage'
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
@@ -16,6 +16,7 @@ function App() {
 
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   const [user, setUser] = useState(null);
+
 
   useEffect(() => {
     // console.log('here');
@@ -38,6 +39,7 @@ function App() {
 
     return () => isSubscribed = false;
   }, [cookies['UserId']]);
+
   
   // console.log(user);
 
@@ -45,14 +47,19 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
+          {user && !user.profile_completed && <Route path="/dashboard" element={<Navigate to='/createprofile' />} />}
+          {user && !user.profile_completed && <Route path="/profile" element={<Navigate to='/createprofile' />} />}
+          {user && !user.profile_completed && <Route path="/editprofile" element={<Navigate to='/createprofile' />} />}
+          {user && !user.profile_completed && <Route path="/profile/:id" element={<Navigate to='/createprofile' />} />}
+          {user && user.profile_completed && <Route path="/createprofile" element={<Navigate to='/dashboard' />} />}
           <Route exact path="/" element={<LandingPage />} />
           <Route path="/signup" element={<><Navbar user={user} solid={false} /> {!user &&<Signup />}{user && <Navigate to='/dashboard'/>} </>} />
           <Route path="/login" element={<><Navbar user={user} solid={false} />{!user &&<Login />}{user && <Navigate to='/dashboard'/>} </>} />
           <Route path="/createprofile" element={<><CreateProfile/></>} />
           <Route path="/editprofile" element={<><EditProfile user={user}/></>} />
           <Route path="/profile" element={<><Navbar user={user} solid={true} /><Profile user={user} /></>} />
-          <Route path="/dashboard" element={<><Navbar user={user} solid={true} /><Dashboard /></>} />
-          <Route path="/profile/:id" element={<><Navbar user={user} solid={true} /><OtherUser user={user} /></>} />
+          <Route path="/dashboard" element={<><Navbar user={user} solid={true} /><Dashboard user={user} setCurUser={setUser}/></>} />
+          <Route path="/profile/:id" element={<><Navbar user={user} solid={true} /><OtherUser user={user} setCurUser={setUser}/></>} />
           {/* <Route exact path="/" element={<LandingPage user={user}/>} />
           {user && <Route exact path="/createprofile" element={<><CreateProfile user={user} edit={false} /></>} />}
           {user && <Route exact path="/editprofile" element={<><CreateProfile user={user} edit={true} /></>} />}

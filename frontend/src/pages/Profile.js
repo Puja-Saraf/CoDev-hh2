@@ -1,8 +1,9 @@
 import React from 'react'
-import maleUser from '../img/user.svg'
+import maleUser from '../img/profuser.svg'
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom'
 import { Oval } from  'react-loader-spinner'
+import axios from 'axios';
 
 export default function Profile({user}) {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
@@ -11,8 +12,10 @@ export default function Profile({user}) {
   if(!user){
     return <div className='flex justify-center items-center h-[100vh]'><Oval color="#fd2f6e" height={80} width={80} /></div>
   }
-  const cur_user=cookies['UserId'];
-  const f=user.user_id===cur_user;
+
+  if(user.user_id!==cookies['UserId']){
+    navigate('/')
+  }
  
   return (
     <div className=' ml-6 mr-6 md:ml-10 md:mr-10 lg:ml-24 lg:mr-24 xl:ml-32 xl:mr-32 mt-28'>
@@ -52,11 +55,7 @@ export default function Profile({user}) {
         <img className='mt-11' src={`https://github-readme-stats.vercel.app/api?username=${user.github_username}&bg_color=fff&border_color=fff&show_icons=true&theme=radical&custom_title=Github%20Stats&icon_color=fd2f6e&text_color=272727`} alt='' />
         <div className=' h-[2px] bg-slate-700 w-[100%] mt-11 opacity-20'></div>
       </div>}
-      {!f && <div className='mt-11 flex flex-row justify-center items-center mb-14'>
-        <button className='bg-[#fe5740] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full mr-6'>Pass</button>
-        <button className='bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full'>Collaborate</button>
-      </div>}
-      {f&&<div className='mt-11 flex flex-row justify-center items-center mb-14'><button className='bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full' onClick={()=>{navigate('/editprofile')}}>Edit Profile</button></div>}
+      <div className='mt-11 flex flex-row justify-center items-center mb-14'><button className='bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full' onClick={()=>{navigate('/editprofile')}}>Edit Profile</button></div>
     </div>
   )
 }
