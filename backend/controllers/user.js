@@ -1,15 +1,62 @@
 const User = require("../models/user.js");
 
 const userController = {
+  getAllUsers: async (req, res) => {
+    try {
+      const { user_id, required_skills } = req.query;
+      const curUser = await User.findOne({ user_id });
+      const blocked_users = curUser.block;
+      const matched_users = curUser.matches;
+      const rejected_users = curUser.rejected;
+      const query = {
+        $and: [
+          {
+            user_id: {
+              $ne: user_id,
+            },
+          },
+          {
+            email_verified: true,
+          },
+          {
+            password: {
+              $exists: true,
+            },
+          },
+          {
+            skills: {
+              $all: required_skills,
+            },
+          },
+          {
+            user_id: {
+              $nin: blocked_users,
+            },
+          },
+          {
+            user_id: {
+              $nin: rejected_users,
+            },
+          },
+          {
+            user_id: {
+              $nin: matched_users,
+            },
+          },
+        ],
+      };
+      const users = await User.find(query).sort({ github_verified: -1 });
+      res.status(200).send(users);
+    } catch (e) {
+      res.status(400).send(e.message);
+      console.log(e.message);
+    }
+  },
   getSingleUser: async (req, res) => {
     try {
-      // console.log('hereee');
       const { user_id, requested_id } = req.query;
-      // console.log(req.query);
-      // console.log(user_id);
-      // console.log(user_id);
-      const curUser = await User.find();
-      // console.log(curUser);
+
+      const curUser = await User.findOne({ user_id });
       const blocked_users = curUser.block;
       const query = {
         $and: [
