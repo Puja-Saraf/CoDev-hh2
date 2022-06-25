@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard';
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
+import OtherUser from './pages/OtherUser';
 function App() {
 
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
@@ -23,7 +24,6 @@ function App() {
       const params = {
         user_id: cookies['UserId'],
         requested_id: cookies['UserId'],
-        token: cookies['AuthToken'],
       }
       const data = await axios.get("http://localhost:8000/users/user", {params});
       // console.log('here');
@@ -51,7 +51,8 @@ function App() {
           <Route path="/createprofile" element={<><CreateProfile/></>} />
           <Route path="/editprofile" element={<><EditProfile user={user}/></>} />
           <Route path="/profile" element={<><Navbar user={user} solid={true} /><Profile user={user} /></>} />
-          <Route path="/dashboard" element={<><Navbar user={user} solid={false} /><Dashboard /></>} />
+          <Route path="/dashboard" element={<><Navbar user={user} solid={true} /><Dashboard /></>} />
+          <Route path="/profile/:id" element={<><Navbar user={user} solid={true} /><OtherUser user={user} /></>} />
           {/* <Route exact path="/" element={<LandingPage user={user}/>} />
           {user && <Route exact path="/createprofile" element={<><CreateProfile user={user} edit={false} /></>} />}
           {user && <Route exact path="/editprofile" element={<><CreateProfile user={user} edit={true} /></>} />}
