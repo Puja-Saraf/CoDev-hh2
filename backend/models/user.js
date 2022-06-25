@@ -54,6 +54,10 @@ const userSchema = mongoose.Schema({
   github_username: {
     type: String,
   },
+  profile_completed: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);

@@ -16,6 +16,9 @@ const userController = {
             },
           },
           {
+            profile_completed: true,
+          },
+          {
             email_verified: true,
           },
           {
@@ -99,6 +102,7 @@ const userController = {
           github_username: formData.github_username,
           show_dob: formData.show_dob,
           show_gender: formData.show_gender,
+          profile_completed: true,
         },
       };
 
