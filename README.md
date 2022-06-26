@@ -1,8 +1,6 @@
 <h1 align="center">CoDev</h1>
 <h2 align="center">Collaborate with some of the best developers around the world</h2>
-<!-- <h3 align="center">Live at https://uno-online-multiplayer.herokuapp.com</h3> -->
-
-<!-- <img src="client/src/assets/logo.png" alt="UNO Logo" width="33%" align="center" /> -->
+<h3 align="center">Live at https://codevv.herokuapp.com</h3>
 
 ## 🤔 What is CoDev?
 
@@ -10,14 +8,11 @@ CoDev is a social media platform wherein the users can register themselves with 
 
 ## 💡Inspiration
 
-Me and my team member Puja Saraf have always been a hackathon enthusiast. One problem we always ran into was finding the perfect team members for our hacks. We do have some amazing ideas to implement but the required tech stacks sometimes goes out of our bounds. Registering for a hackathon and then forming a team then and there isn't something for us. We'd prefer planning our projects beforehand and get to know our team mates better.
-That's when we came up with CoDev.
+[Me](https://github.com/jalanprakhar) and my team member [Puja Saraf](https://github.com/Puja-Saraf) have always been a hackathon enthusiast. One problem we always ran into was finding the perfect team members for our hacks. We do have some amazing ideas to implement but the required tech stacks sometimes goes out of our bounds. Registering for a hackathon and then forming a team then and there isn't something for us. We'd prefer planning our projects beforehand and get to know our team mates better. That's when we came up with CoDev.
 
 ## ❓ About CoDev
 
 This website was built with [React](https://reactjs.org/), [Express](https://expressjs.com/) and [Node](https://nodejs.org/en/). It also has text chat functionality to communicate with fellow developers!
-
-<!-- [How I Made This Game](https://www.youtube.com/watch?v=FBAJdbpFnjs) -->
 
 ## 🧐 How to Use?
 
@@ -102,3 +97,7 @@ Contributions are what make the open source community such an amazing place to b
 4. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 5. Push to the branch on your forked repo (`git push origin feature/AmazingFeature`)
 6. Open a pull request
+
+<br>
+
+_(Since Codev is currently in Beta we request to always provide a valid github id while creating a profile)_
