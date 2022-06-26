@@ -1,5 +1,5 @@
 <h1 align="center">CoDev</h1>
-<h2 align="center">Collaborte with some of the best developers around the world</h2>
+<h2 align="center">Collaborate with some of the best developers around the world</h2>
 <!-- <h3 align="center">Live at https://uno-online-multiplayer.herokuapp.com</h3> -->
 
 <!-- <img src="client/src/assets/logo.png" alt="UNO Logo" width="33%" align="center" /> -->
