@@ -54,7 +54,6 @@ Follow the steps below, after cloning the repository:
 - At the root of the project directory, use npm to install the server-side dependencies
 
 ```bash
-cd backend
 npm install
 ```
 
@@ -71,13 +70,13 @@ This command gets the server running on localhost port 8000.
 - In a separate terminal, navigate into the frontend folder and use npm to install the client-side dependencies
 
 ```bash
-cd client
+cd frontend
 npm install
 ```
 
-This command installs all the client-side dependencies needed for the game to run locally.
+This command installs all the client-side dependencies needed for the website to run locally.
 
-- Finally, use npm to run client
+- Finally, use npm to run frontend
 
 ```bash
 npm start
