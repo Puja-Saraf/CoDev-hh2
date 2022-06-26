@@ -322,7 +322,16 @@ export default function CreateProfile() {
           />
 
           <label htmlFor="url" className=' mt-4 mb-2.5 text-start'>Profile Photo</label>
-          <FileBase className='mt-2.5 mb-2.5' type="file" multiple={false} onDone={({ base64 }) => setFormData({ ...formData, url: base64 })} />
+          {/* <FileBase className='mt-2.5 mb-2.5' type="file" multiple={false} onDone={({ base64 }) => setFormData({ ...formData, url: base64 })} /> */}
+          <input
+            className='w-[100%] p-2 md:p-3 mt-2.5 mb-2.5 text-base border-[#2f2e41] border-2 rounded-lg'
+            id="img_url"
+            type="text"
+            name="img_url"
+            placeholder="image url"
+            value={formData.img_url}
+            onChange={handleChange}
+          />
           <div className="photo-container w-[100%] mt-2.5 mb-2.5">
             {formData.url && <img src={formData.url} alt="profile pic preview" />}
           </div>

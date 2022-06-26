@@ -14,6 +14,7 @@ import axios from 'axios';
 import OtherUser from './pages/OtherUser';
 import PendingUsers from './pages/PendingUsers';
 import RejectedUsers from './pages/RejectedUsers';
+import ChatContainer from './pages/ChatContainer';
 
 function App() {
 
@@ -63,16 +64,10 @@ function App() {
           <Route path="/profile" element={<><Navbar user={user} solid={true} /><Profile user={user} /></>} />
           <Route path="/dashboard" element={<><Navbar user={user} solid={true} /><Dashboard user={user} setCurUser={setUser}/></>} />
           <Route path="/profile/:id" element={<><Navbar user={user} solid={true} /><OtherUser user={user} setCurUser={setUser}/></>} />
-          {/* <Route exact path="/" element={<LandingPage user={user}/>} />
-          {user && <Route exact path="/createprofile" element={<><CreateProfile user={user} edit={false} /></>} />}
-          {user && <Route exact path="/editprofile" element={<><CreateProfile user={user} edit={true} /></>} />}
-          {user && <Route exact path="/profile" element={<><Navbar user={user} solid={true} /><Profile user={user} /></>} />}
-          {user && <Route exact path="/dashboard" element={<><Navbar user={user} solid={false} /><Dashboard /></>} /> }
-          {!user && <Route exact path='/signup' element={<><Navbar user={user} solid={false} /> <Signup/></>}/>}
-          {!user && <Route exact path='/login' element={<><Navbar user={user} solid={false} /> <Login/></>}/>} */}
+          <Route path="/chat" element={<><Navbar user={user} solid={true} /><ChatContainer user={user}/></>} />
           <Route path="/pendingusers" element={<><Navbar user={user} solid={true} /><PendingUsers setCurUser={setUser}/></>} />
           <Route path="/rejectedusers" element={<><Navbar user={user} solid={true} /><RejectedUsers setCurUser={setUser}/></>} />
-          <Route path="*" element={<Navigate to='/'/>}/>
+          <Route path="*" element={<Navigate to='/' />} />
         </Routes>
       </BrowserRouter>
     </div>

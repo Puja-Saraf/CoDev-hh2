@@ -71,8 +71,8 @@ export default function Navbar({user,solid}) {
               {user && <li className="nav-item">
                 <Link
                   className="px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"
-                  to="/matchedusers"
-                ><i className="fa-solid fa-comment-dots text-2xl hidden lg:block text-[#fd2f6e]"></i>
+                  to="/chat"
+                ><i className="fa-solid fa-comment text-2xl hidden lg:block text-[#fd2f6e]"></i>
                 <span className='text-left block lg:hidden'>Chat</span>
                 </Link>
               </li>}
