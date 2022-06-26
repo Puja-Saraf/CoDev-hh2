@@ -3,7 +3,6 @@ import maleUser from '../img/profuser.svg'
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom'
 import { Oval } from  'react-loader-spinner'
-import axios from 'axios';
 
 export default function Profile({user}) {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);

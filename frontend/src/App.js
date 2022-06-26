@@ -12,6 +12,9 @@ import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import OtherUser from './pages/OtherUser';
+import PendingUsers from './pages/PendingUsers';
+import RejectedUsers from './pages/RejectedUsers';
+
 function App() {
 
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
@@ -67,6 +70,8 @@ function App() {
           {user && <Route exact path="/dashboard" element={<><Navbar user={user} solid={false} /><Dashboard /></>} /> }
           {!user && <Route exact path='/signup' element={<><Navbar user={user} solid={false} /> <Signup/></>}/>}
           {!user && <Route exact path='/login' element={<><Navbar user={user} solid={false} /> <Login/></>}/>} */}
+          <Route path="/pendingusers" element={<><Navbar user={user} solid={true} /><PendingUsers setCurUser={setUser}/></>} />
+          <Route path="/rejectedusers" element={<><Navbar user={user} solid={true} /><RejectedUsers setCurUser={setUser}/></>} />
           <Route path="*" element={<Navigate to='/'/>}/>
         </Routes>
       </BrowserRouter>

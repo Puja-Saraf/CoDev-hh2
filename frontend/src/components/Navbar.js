@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../img/logo.svg'
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
+import maleUser from '../img/profuser.svg'
 
 export default function Navbar({user,solid}) {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -43,7 +44,7 @@ export default function Navbar({user,solid}) {
             className={"lg:flex flex-grow items-center" +(navbarOpen ? " flex" : " hidden")}
             id="example-navbar-danger"
           >
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
+            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto justify-center lg:items-center">
               {!user && <li className="nav-item">
                 <Link
                   className="px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"
@@ -62,9 +63,50 @@ export default function Navbar({user,solid}) {
               {user && <li className="nav-item">
                 <Link
                   className="px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"
+                  to="/dashboard"
+                ><i className="fa-solid fa-users text-2xl hidden lg:block text-[#fd2f6e]"></i>
+                <span className='text-left block lg:hidden'>Dashboard</span>
+                </Link>
+              </li>}
+              {user && <li className="nav-item">
+                <Link
+                  className="px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"
+                  to="/matchedusers"
+                ><i className="fa-solid fa-comment-dots text-2xl hidden lg:block text-[#fd2f6e]"></i>
+                <span className='text-left block lg:hidden'>Chat</span>
+                </Link>
+              </li>}
+              {user && <li className="nav-item">
+                <Link
+                  className="px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"
+                  to="/rejectedusers"
+                ><i className="fa-solid fa-user-xmark text-2xl hidden lg:block text-[#fd2f6e]"></i>
+                <span className='text-left block lg:hidden'>Rejected Users</span>
+                </Link>
+              </li>}
+              {user && <li className="nav-item">
+                <Link
+                  className="px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"
+                  to="/pendingusers"
+                ><i className="fa-solid fa-user-clock text-2xl hidden lg:block lg:mr-4 text-[#fd2f6e]"></i>
+                <span className='text-left block lg:hidden'>Pending Users</span>
+                </Link>
+              </li>}
+              {user && <li className="nav-item">
+                <Link
+                  className="px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"
+                  to="/profile"
+                ><img src={user.img_url?user.img_url:maleUser} className='w-11 h-11 rounded-full hidden lg:block'/>
+                  <span className='text-left block lg:hidden'>My Profile</span>
+                </Link>
+              </li>}
+              {user && <li className="nav-item">
+                <Link
+                  className="px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"
                   to="/"
                   onClick={handleLogout}
-                >Logout
+                ><i className="fa-solid fa-right-from-bracket text-2xl hidden lg:block "></i>
+                <span className='text-left block lg:hidden'>Logout</span>
                 </Link>
               </li>}
             </ul>

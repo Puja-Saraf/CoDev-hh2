@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 import { Oval } from 'react-loader-spinner'
 import ProfileCard from '../components/ProfileCard'
 
-export default function Dashboard({setCurUser}) {
+export default function Dashboard({user,setCurUser}) {
 
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   const [users, setUsers] = useState(null);
@@ -30,14 +30,50 @@ export default function Dashboard({setCurUser}) {
     return () => isSubscribed = false;
   }, [cookies['UserId']]);
 
+
+  const handleMatch = async (id) => {
+    try {
+
+      const params = {
+        user_id: cookies['UserId'],
+        clicked_user_id: id
+
+      }
+      const data = await axios.put(`http://localhost:8000/users/match`, {}, { params });
+      // console.log(data);
+      setCurUser(data.data);
+      window.location.reload()
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  const handleReject = async (id) => {
+    try {
+
+      const params = {
+        user_id: cookies['UserId'],
+        clicked_user_id: id
+
+      }
+      const data = await axios.put(`http://localhost:8000/users/reject`, {}, { params });
+      // console.log(data);
+      setCurUser(data.data);
+      window.location.reload()
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   // console.log(users)
   if (!users) {
     return <div className='flex justify-center items-center h-[100vh]'><Oval color="#fd2f6e" height={80} width={80} /></div>
   }
 
   return (
-    <div className=' flex flex-col snap-y overflow-y-scroll md:snap-x snap-mandatory md:flex-row md:overflow-x-scroll'>
-      {users.map((user,_index)=>(<ProfileCard user={user} setCurUser={setCurUser} key={_index}/>))}
+    <div className=' flex flex-col snap-y overflow-y-scroll lg:snap-x snap-mandatory lg:flex-row lg:overflow-x-scroll'>
+      {users.map((user,_index)=>(<ProfileCard user={user} setCurUser={setCurUser} key={_index} handleMatch={handleMatch} handleReject={handleReject}/>))}
     </div>
   )
 }
