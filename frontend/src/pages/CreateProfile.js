@@ -56,7 +56,7 @@ export default function CreateProfile() {
     try {
       setLoading(true);
       const res = await axios.put(
-        "http://localhost:8000/users/user",
+        "https://codevv.herokuapp.com/users/user",
         { formData: newOb },
         { params }
       );

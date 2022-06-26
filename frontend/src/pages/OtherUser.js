@@ -17,7 +17,7 @@ export default function OtherUser({ setCurUser }) {
         clicked_user_id: user.user_id,
       };
       const data = await axios.put(
-        `http://localhost:8000/users/match`,
+        `https://codevv.herokuapp.com/users/match`,
         {},
         { params }
       );
@@ -35,7 +35,7 @@ export default function OtherUser({ setCurUser }) {
         clicked_user_id: user.user_id,
       };
       const data = await axios.put(
-        `http://localhost:8000/users/reject`,
+        `https://codevv.herokuapp.com/users/reject`,
         {},
         { params }
       );

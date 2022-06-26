@@ -38,7 +38,7 @@ export default function Dashboard({ user, setCurUser }) {
         clicked_user_id: id,
       };
       const data = await axios.put(
-        `http://localhost:8000/users/match`,
+        `https://codevv.herokuapp.com/users/match`,
         {},
         { params }
       );
@@ -56,7 +56,7 @@ export default function Dashboard({ user, setCurUser }) {
         clicked_user_id: id,
       };
       const data = await axios.put(
-        `http://localhost:8000/users/reject`,
+        `https://codevv.herokuapp.com/users/reject`,
         {},
         { params }
       );
