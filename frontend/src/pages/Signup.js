@@ -22,7 +22,7 @@ export default function Signup() {
     let data;
     if (password === confPassword) {
       try {
-        data = await axios.post("http://localhost:8000/auth/signup", {
+        data = await axios.post("https://codevv.herokuapp.com/auth/signup", {
           email: email,
           password: password,
         });

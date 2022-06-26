@@ -20,7 +20,7 @@ export default function Login() {
     e.preventDefault();
     // console.log({email, password})
     try {
-      const data = await axios.post("http://localhost:8000/auth/login", {
+      const data = await axios.post("https://codevv.herokuapp.com/auth/login", {
         email: email,
         password: password,
       });
