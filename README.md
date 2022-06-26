@@ -8,6 +8,11 @@
 
 CoDev is a social media platform wherein the users can register themselves with their email ids and provide us their github id. We will seamlessly fetch all of his github achievements to showcase it on our profile page. We can view the profiles of other amazing developers and **Collaborate** with them to initiate a chat and discuss any thing related to tech or otherwise😉. Tired of seeing the same user again and again? The users can even **Pass** the user and we do make sure to never show his/her profile again unless you change your mind.
 
+## 💡Inspiration
+
+Me and my team member Puja Saraf have always been a hackathon enthusiast. One problem we always ran into was finding the perfect team members for our hacks. We do have some amazing ideas to implement but the required tech stacks sometimes goes out of our bounds. Registering for a hackathon and then forming a team then and there isn't something for us. We'd prefer planning our projects beforehand and get to know our team mates better.
+That's when we came up with CoDev.
+
 ## ❓ About CoDev
 
 This website was built with [React](https://reactjs.org/), [Express](https://expressjs.com/) and [Node](https://nodejs.org/en/). It also has text chat functionality to communicate with fellow developers!
