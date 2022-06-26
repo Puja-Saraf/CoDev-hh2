@@ -14,6 +14,10 @@ app.use("/users", userRouter);
 app.use("/messages", messageRouter);
 
 const PORT = process.env.PORT || 8000;
+
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static("frontend/build"));
+}
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);
 });
