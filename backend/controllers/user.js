@@ -1,6 +1,47 @@
 const User = require("../models/user.js");
 
 const userController = {
+  getRejectedUsers: async (req, res) => {
+    const { user_id } = req.query;
+    const curUser = await User.findOne({ user_id });
+    const blocked_users = curUser.block;
+    const rejected_users = curUser.rejected;
+    const query = {
+      $and: [
+        {
+          user_id: {
+            $ne: user_id,
+          },
+        },
+        {
+          email_verified: true,
+        },
+        {
+          password: {
+            $exists: true,
+          },
+        },
+        {
+          user_id: {
+            $nin: blocked_users,
+          },
+        },
+
+        {
+          user_id: {
+            $in: rejected_users,
+          },
+        },
+      ],
+    };
+    try {
+      const users = await User.find(query);
+      res.status(200).send(users);
+    } catch (e) {
+      console.log(e.message);
+      res.status(400).send(e.message);
+    }
+  },
   getAllUsers: async (req, res) => {
     try {
       const { user_id } = req.query;

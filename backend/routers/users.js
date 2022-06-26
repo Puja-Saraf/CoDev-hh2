@@ -16,6 +16,8 @@ userRouter.put("/match", userController.postMatchUser);
 
 userRouter.put("/reject", userController.rejectUser);
 
+userRouter.get("/reject", userController.getRejectedUsers);
+
 userRouter.put("/unreject", userController.unrejectUser);
 
 module.exports = userRouter;
