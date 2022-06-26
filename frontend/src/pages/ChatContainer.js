@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react'
 import MatchesDisplay from './MatchesDisplay'
 import ChatDisplay from './ChatDisplay'

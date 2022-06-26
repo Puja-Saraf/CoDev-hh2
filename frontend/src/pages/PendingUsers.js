@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie';
@@ -6,7 +7,7 @@ import List from '../components/List';
 
 export default function PendingUsers({setCurUser}) {
 
-    const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function PendingUsers({setCurUser}) {
       }
       const data = await axios.get("http://localhost:8000/users/pending", { params });
       // console.log('here');
-      console.log(data);
+      // console.log(data);
 
       if (isSubscribed) {
         setUsers(data.data);
@@ -35,7 +36,7 @@ export default function PendingUsers({setCurUser}) {
     return <div className='flex justify-center items-center h-[100vh]'><Oval color="#fd2f6e" height={80} width={80} /></div>
   }
 
-  console.log(users);
+  // console.log(users);
   
 
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from "react";
 import person1 from "../img/person1.svg";
 import person2 from "../img/person2.svg";

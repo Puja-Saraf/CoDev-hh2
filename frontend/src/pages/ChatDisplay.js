@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react'
 import ChatInput from './ChatInput'
 import Chat from './Chat'

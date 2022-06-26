@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'axios';
 import React from 'react'
 import { useCookies } from 'react-cookie';

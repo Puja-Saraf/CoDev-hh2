@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import maleUser from '../img/profuser.svg'
 import { useCookies } from 'react-cookie';

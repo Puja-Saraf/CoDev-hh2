@@ -1,5 +1,6 @@
+/* eslint-disable */
 import React, { useState } from 'react'
-import FileBase from 'react-file-base64';
+// import FileBase from 'react-file-base64';
 import Multiselect from 'multiselect-react-dropdown';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
