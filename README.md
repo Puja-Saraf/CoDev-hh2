@@ -89,7 +89,7 @@ This command gets the client running on localhost port 3000.
 
 Head over to http://localhost:3000/ and enjoy! 🎉
 
-## 🤝 Contributing
+<!---## 🤝 Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated. The **Issues** tab is a good place to begin!
 
@@ -99,6 +99,7 @@ Contributions are what make the open source community such an amazing place to b
 4. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 5. Push to the branch on your forked repo (`git push origin feature/AmazingFeature`)
 6. Open a pull request
+--->
 
 ## 👨‍💻 Contributors
 - [Prakhar Jalan](https://www.linkedin.com/in/prakhar-jalan-54aa07201/)
