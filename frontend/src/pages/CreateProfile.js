@@ -3,9 +3,9 @@ import React, { useState } from "react";
 // import FileBase from 'react-file-base64';
 import Multiselect from "multiselect-react-dropdown";
 import { useCookies } from "react-cookie";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
+import { api } from "../api";
 
 export default function CreateProfile() {
   const [cookies, setCookie, removeCookie] = useCookies();
@@ -55,11 +55,7 @@ export default function CreateProfile() {
     };
     try {
       setLoading(true);
-      const res = await axios.put(
-        "https://codevv.herokuapp.com/users/user",
-        { formData: newOb },
-        { params }
-      );
+      const res = await api.updateUser(newOb, params);
       // console.log('here');
       // console.log(res)
       setLoading(false);

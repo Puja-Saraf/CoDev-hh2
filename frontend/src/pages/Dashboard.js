@@ -1,9 +1,9 @@
 /* eslint-disable */
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Oval } from "react-loader-spinner";
 import ProfileCard from "../components/ProfileCard";
+import { api } from "../api";
 
 export default function Dashboard({ user, setCurUser }) {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -16,11 +16,7 @@ export default function Dashboard({ user, setCurUser }) {
       const params = {
         user_id: cookies["UserId"],
       };
-      const data = await axios.get("https://codevv.herokuapp.com/users/users", {
-        params,
-      });
-      // console.log('here');
-      // console.log(data);
+      const data = await api.getAllUsers(params);
 
       if (isSubscribed) {
         setUsers(data.data);
@@ -37,11 +33,7 @@ export default function Dashboard({ user, setCurUser }) {
         user_id: cookies["UserId"],
         clicked_user_id: id,
       };
-      const data = await axios.put(
-        `https://codevv.herokuapp.com/users/match`,
-        {},
-        { params }
-      );
+      const data = await api.matchUser(params);
       // console.log(data);
       setCurUser(data.data);
       window.location.reload();
@@ -55,11 +47,7 @@ export default function Dashboard({ user, setCurUser }) {
         user_id: cookies["UserId"],
         clicked_user_id: id,
       };
-      const data = await axios.put(
-        `https://codevv.herokuapp.com/users/reject`,
-        {},
-        { params }
-      );
+      const data = await api.rejectUser(params);
       // console.log(data);
       setCurUser(data.data);
       window.location.reload();
@@ -76,6 +64,8 @@ export default function Dashboard({ user, setCurUser }) {
       </div>
     );
   }
+
+  users.sort(() => Math.random() - 0.5);
 
   return (
     <div className=" flex flex-col snap-y overflow-y-scroll lg:snap-x snap-mandatory lg:flex-row lg:overflow-x-scroll">

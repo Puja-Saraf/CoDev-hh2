@@ -1,8 +1,8 @@
 /* eslint-disable */
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Oval } from "react-loader-spinner";
+import { api } from "../api";
 import List from "../components/List";
 
 export default function PendingUsers({ setCurUser }) {
@@ -16,10 +16,7 @@ export default function PendingUsers({ setCurUser }) {
       const params = {
         user_id: cookies["UserId"],
       };
-      const data = await axios.get(
-        "https://codevv.herokuapp.com/users/pending",
-        { params }
-      );
+      const data = await api.getPendingUsers(params);
       // console.log('here');
       // console.log(data);
 

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import ChatInput from "./ChatInput";
 import Chat from "./Chat";
-import axios from "axios";
+import { api } from "../api";
 
 export default function ChatDisplay({ user, clickedUser }) {
   const [userMessages, setUserMessages] = useState(null);
@@ -13,9 +13,7 @@ export default function ChatDisplay({ user, clickedUser }) {
         user_id: user.user_id,
         client_user_id: clickedUser.user_id,
       };
-      const data = await axios.get("https://codevv.herokuapp.com/messages", {
-        params,
-      });
+      const data = await api.getMessages(params);
 
       setUserMessages(data.data);
     } catch (err) {
@@ -28,9 +26,7 @@ export default function ChatDisplay({ user, clickedUser }) {
         user_id: clickedUser.user_id,
         client_user_id: user.user_id,
       };
-      const data = await axios.get("https://codevv.herokuapp.com/messages", {
-        params,
-      });
+      const data = await api.getMessages(params);
 
       setClickedUserMessages(data.data);
     } catch (err) {
