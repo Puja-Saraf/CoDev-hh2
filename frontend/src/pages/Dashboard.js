@@ -65,6 +65,8 @@ export default function Dashboard({ user, setCurUser }) {
     );
   }
 
+  users.sort(() => Math.random() - 0.5);
+
   return (
     <div className=" flex flex-col snap-y overflow-y-scroll lg:snap-x snap-mandatory lg:flex-row lg:overflow-x-scroll">
       {users.map((user, _index) => (
