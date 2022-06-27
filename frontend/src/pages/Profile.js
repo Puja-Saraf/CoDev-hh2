@@ -20,13 +20,13 @@ export default function Profile({user}) {
   return (
     <div className=' ml-6 mr-6 md:ml-10 md:mr-10 lg:ml-24 lg:mr-24 xl:ml-32 xl:mr-32 mt-28'>
       <div className='flex flex-col md:flex-row justify-center items-center'>
-        <img className=' w-64 h-64 md:w-72 md:h-72 lg:w-[19rem] lg:h-[19rem] xl:w-80 xl:h-80 rounded-full' src={user.img_url?user.img_url:maleUser} alt=''/>
+        <img className=' w-64 h-64 md:w-72 md:h-72 lg:w-[19rem] lg:h-[19rem] xl:w-80 xl:h-80 rounded-full' src={user.img_url?user.img_url:maleUser} alt='profile pic'/>
         <div className=' md:ml-8 lg:ml-10'>
           <div className='flex flex-col md:flex-row items-center mt-6 md:mt-0'>
             <h1 className='text-2xl lg:text-3xl font-bold text-[#fd2f6e]'>{user.name}</h1>
             <div className='flex flex-row md:ml-6'>
             <span>{user.show_email && <a className='text-xl lg:text-2xl' href={`mailto:${user.email}`}><i className="fa-solid fa-envelope text-[#fd2f6e]"></i></a> }</span>
-            <span>{user.github_verified && user.github_username.trim().length>0 && <a className='text-xl lg:text-2xl ml-3' href={`https://github.com/${user.github_username}`}><i className="fa-brands fa-github text-[#fd2f6e]"></i></a>}</span>
+            <span>{user.github_verified && user.github_username.trim().length>0 && <a className='text-xl lg:text-2xl ml-3' href={`https://github.com/${user.github_username}`} target='_blank'><i className="fa-brands fa-github text-[#fd2f6e]"></i></a>}</span>
             </div>
           </div>
           <h3 className='text-center md:text-left text-base lg:text-lg font-medium'>{user.professional_title}</h3>
@@ -43,16 +43,16 @@ export default function Profile({user}) {
       <div className='grid grid-cols-4 gap-5 md:grid-cols-7 md:gap-10 lg:grid-cols-9 lg:gap-8 xl:grid-cols-11 xl:gap-5 mt-11 ml-10 mr-10'>
         {user.skills.map((skill,_index)=>{
           const skillImg=require('../../public/img/skills/'+ skill.key.replace(/ /g,'') +'.svg')
-          return <span className='tooltip relative' key={_index}><img className='w-[100%] h-[100%]' src={skillImg} alt=''/> <span className='tooltiptext'>{skill.key}</span></span>
+          return <span className='tooltip relative' key={_index}><img className='w-[100%] h-[100%]' src={skillImg} alt='skills'/> <span className='tooltiptext'>{skill.key}</span></span>
 
         }
         )}
       </div>
       <div className=' h-[2px] bg-slate-700 w-[100%] mt-11 opacity-20'></div>
       {user.github_verified && user.github_username.trim().length>0 && <div className='flex flex-col mt-12 justify-center items-center'>
-        <div className='-ml-6 -mr-6 md:ml-0 md:mr-0'><img src={`https://activity-graph.herokuapp.com/graph?username=${user.github_username}&bg_color=fff&color=272727&line=fd2f6e&point=fe5740&custom_title=Github%20Contribution%20Graph`} alt='' /></div>
+        <div className='-ml-6 -mr-6 md:ml-0 md:mr-0'><img src={`https://activity-graph.herokuapp.com/graph?username=${user.github_username}&bg_color=fff&color=272727&line=fd2f6e&point=fe5740&custom_title=Github%20Contribution%20Graph`} alt='Github contribution graph' /></div>
         <div className=' h-[2px] bg-slate-700 w-[100%] mt-11 opacity-20'></div>
-        <img className='mt-11' src={`https://github-readme-stats.vercel.app/api?username=${user.github_username}&bg_color=fff&border_color=fff&show_icons=true&theme=radical&custom_title=Github%20Stats&icon_color=fd2f6e&text_color=272727`} alt='' />
+        <img className='mt-11' src={`https://github-readme-stats.vercel.app/api?username=${user.github_username}&bg_color=fff&border_color=fff&show_icons=true&theme=radical&custom_title=Github%20Stats&icon_color=fd2f6e&text_color=272727`} alt='Github stats' />
         <div className=' h-[2px] bg-slate-700 w-[100%] mt-11 opacity-20'></div>
       </div>}
       <div className='mt-11 flex flex-row justify-center items-center mb-14'><button className='bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full' onClick={()=>{navigate('/editprofile')}}>Edit Profile</button></div>

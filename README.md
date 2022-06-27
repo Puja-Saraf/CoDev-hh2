@@ -1,4 +1,4 @@
-<h1 align="center">CoDev</h1>
+<h1 align="center"><span><img src='screenshots/logo.png' height='30px' style='margin-right:10px;'/></span>CoDev</h1>
 <h2 align="center">Collaborate with some of the best developers around the world</h2>
 <h3 align="center">Live at https://codevv.herokuapp.com</h3>
 
@@ -48,6 +48,9 @@ Follow the steps below, after cloning the repository:
 - Create a .env file inside the backend folder and then delcare the following two variables inside it
   - PASSWORD="Your atlas password"
   - USER="your atlas username"
+- Go to frontend/package.json and add the following line:-
+```"proxy":"http://localhost:8000",```
+- Go to frontend/src/api/index.js and change the base url from ```https://codevv.herokuapp.com``` to ```http://localhost:8000``` (at line no. 2)
 
 ### ⏳ Installation
 
@@ -96,6 +99,10 @@ Contributions are what make the open source community such an amazing place to b
 4. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 5. Push to the branch on your forked repo (`git push origin feature/AmazingFeature`)
 6. Open a pull request
+
+## 👨‍💻 Contributors
+- [Prakhar Jalan](https://www.linkedin.com/in/prakhar-jalan-54aa07201/)
+- [Puja Saraf](https://www.linkedin.com/in/puja-saraf-736325201/)
 
 <br>
 

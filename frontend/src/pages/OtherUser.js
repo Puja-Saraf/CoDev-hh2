@@ -76,7 +76,7 @@ export default function OtherUser({ setCurUser }) {
         <img
           className=" w-64 h-64 md:w-72 md:h-72 lg:w-[19rem] lg:h-[19rem] xl:w-80 xl:h-80 rounded-full"
           src={user.img_url ? user.img_url : maleUser}
-          alt=""
+          alt="profile pic"
         />
         <div className=" md:ml-8 lg:ml-10">
           <div className="flex flex-col md:flex-row items-center mt-6 md:mt-0">
@@ -100,6 +100,7 @@ export default function OtherUser({ setCurUser }) {
                     <a
                       className="text-xl lg:text-2xl ml-3"
                       href={`https://github.com/${user.github_username}`}
+                      target='_blank'
                     >
                       <i className="fa-brands fa-github text-[#fd2f6e]"></i>
                     </a>
@@ -142,7 +143,7 @@ export default function OtherUser({ setCurUser }) {
             ".svg");
           return (
             <span className="tooltip relative" key={_index}>
-              <img className="w-[100%] h-[100%]" src={skillImg} alt="" />{" "}
+              <img className="w-[100%] h-[100%]" src={skillImg} alt="skills" />{" "}
               <span className="tooltiptext">{skill.key}</span>
             </span>
           );
@@ -154,14 +155,14 @@ export default function OtherUser({ setCurUser }) {
           <div className="-ml-6 -mr-6 md:ml-0 md:mr-0">
             <img
               src={`https://activity-graph.herokuapp.com/graph?username=${user.github_username}&bg_color=fff&color=272727&line=fd2f6e&point=fe5740&custom_title=Github%20Contribution%20Graph`}
-              alt=""
+              alt="Github Contribution Graph"
             />
           </div>
           <div className=" h-[2px] bg-slate-700 w-[100%] mt-11 opacity-20"></div>
           <img
             className="mt-11"
             src={`https://github-readme-stats.vercel.app/api?username=${user.github_username}&bg_color=fff&border_color=fff&show_icons=true&theme=radical&custom_title=Github%20Stats&icon_color=fd2f6e&text_color=272727`}
-            alt=""
+            alt="Github stats"
           />
           <div className=" h-[2px] bg-slate-700 w-[100%] mt-11 opacity-20"></div>
         </div>

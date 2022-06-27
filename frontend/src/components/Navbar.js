@@ -29,7 +29,7 @@ export default function Navbar({user,solid}) {
             <Link
               className="text-2xl font-bold leading-relaxed mr-4 py-2 whitespace-nowrap text-[#fd2f6e] flex flex-row"
               to="/"
-            ><img src={logo} className='h-6 mt-2 mr-1' alt=''/>Co<span className='text-[#fe5740]'>Dev</span>
+            ><img src={logo} className='h-6 mt-2 mr-1' alt='logo'/>Co<span className='text-[#fe5740]'>Dev</span>
             </Link>
             <button
               className=" cursor-pointer leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
