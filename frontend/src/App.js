@@ -17,29 +17,23 @@ import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import axios from "axios";
 import OtherUser from "./pages/OtherUser";
 import PendingUsers from "./pages/PendingUsers";
 import RejectedUsers from "./pages/RejectedUsers";
 import ChatContainer from "./pages/ChatContainer";
-
+import { api } from "./api";
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // console.log('here');
     let isSubscribed = true;
     const fetchData = async () => {
       const params = {
         user_id: cookies["UserId"],
         requested_id: cookies["UserId"],
       };
-      const data = await axios.get("https://codevv.herokuapp.com/users/user", {
-        params,
-      });
-      // console.log('here');
-      // console.log(data);
+      const data = await api.getSelf(params);
 
       if (isSubscribed) {
         setUser(data.data);

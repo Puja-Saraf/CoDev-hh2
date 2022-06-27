@@ -2,12 +2,12 @@
 import React, { useState } from "react";
 import person1 from "../img/person1.svg";
 import person2 from "../img/person2.svg";
-import axios from "axios";
 import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
+import { api } from "../api";
 
 export default function Login() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -18,12 +18,8 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log({email, password})
     try {
-      const data = await axios.post("https://codevv.herokuapp.com/auth/login", {
-        email: email,
-        password: password,
-      });
+      const data = await api.login(email, password);
       // console.log(data);
       setCookie("AuthToken", data.data.token);
       setCookie("UserId", data.data.userId);

@@ -3,9 +3,9 @@ import React, { useState } from "react";
 // import FileBase from 'react-file-base64';
 import Multiselect from "multiselect-react-dropdown";
 import { useCookies } from "react-cookie";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
+import { api } from "../api";
 
 export default function EditProfile({ user }) {
   const [cookies, setCookie, removeCookie] = useCookies();
@@ -46,11 +46,7 @@ export default function EditProfile({ user }) {
       token: cookies["AuthToken"],
     };
     try {
-      const res = await axios.put(
-        "https://codevv.herokuapp.com/users/user",
-        { formData: newOb },
-        { params }
-      );
+      const res = await api.updateUser(newOb, params);
       // console.log(res)
       navigate("/profile");
       window.location.reload();

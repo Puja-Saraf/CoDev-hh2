@@ -1,6 +1,6 @@
 /* eslint-disable */
-import axios from "axios";
 import React, { useState } from "react";
+import { api } from "../api";
 
 export default function ChatInput({
   user,
@@ -24,7 +24,7 @@ export default function ChatInput({
     };
 
     try {
-      await axios.put("https://codevv.herokuapp.com/messages", { message });
+      await api.postMessage(message);
       getUserMessages();
       getClickedUserMessages();
       setTextArea("");

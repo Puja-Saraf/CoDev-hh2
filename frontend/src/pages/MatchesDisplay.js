@@ -1,8 +1,8 @@
 /* eslint-disable */
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import { api } from "../api";
 import maleUser from "../img/profuser.svg";
 
 export default function MatchesDisplay({ setClickedUser }) {
@@ -17,10 +17,7 @@ export default function MatchesDisplay({ setClickedUser }) {
       const params = {
         user_id: cookies["UserId"],
       };
-      const data = await axios.get(
-        "https://codevv.herokuapp.com/users/matched",
-        { params }
-      );
+      const data = await api.getMatchedUsers(params);
       // console.log('here');
       // console.log(data);
 

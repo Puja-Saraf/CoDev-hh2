@@ -1,5 +1,5 @@
 /* eslint-disable */
-import axios from "axios";
+import { api } from "../api";
 import React from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
@@ -14,12 +14,7 @@ export default function List({ user, pending, setCurUser }) {
         user_id: cookies["UserId"],
         clicked_user_id: user.user_id,
       };
-      const data = await axios.put(
-        `https://codevv.herokuapp.com/users/match`,
-        {},
-        { params }
-      );
-      // console.log(data);
+      const data = await api.matchUser(params);
       setCurUser(data.data);
       window.location.reload();
     } catch (e) {
@@ -32,11 +27,7 @@ export default function List({ user, pending, setCurUser }) {
         user_id: cookies["UserId"],
         clicked_user_id: user.user_id,
       };
-      const data = await axios.put(
-        `https://codevv.herokuapp.com/users/reject`,
-        {},
-        { params }
-      );
+      const data = await api.rejectUser(params);
       // console.log(data);
       setCurUser(data.data);
       window.location.reload();
@@ -51,11 +42,7 @@ export default function List({ user, pending, setCurUser }) {
         user_id: cookies["UserId"],
         clicked_user_id: user.user_id,
       };
-      const data = await axios.put(
-        `https://codevv.herokuapp.com/users/unreject`,
-        {},
-        { params }
-      );
+      const data = await api.unrejectUser(params);
       // console.log(data);
       setCurUser(data.data);
       window.location.reload();

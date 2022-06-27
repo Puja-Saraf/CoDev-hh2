@@ -5,7 +5,7 @@ import maleUser from "../img/profuser.svg";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
-import axios from "axios";
+import { api } from "../api";
 
 export default function OtherUser({ setCurUser }) {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -16,12 +16,7 @@ export default function OtherUser({ setCurUser }) {
         user_id: cookies["UserId"],
         clicked_user_id: user.user_id,
       };
-      const data = await axios.put(
-        `https://codevv.herokuapp.com/users/match`,
-        {},
-        { params }
-      );
-      // console.log(data);
+      const data = await api.matchUser(params);
       setCurUser(data.data);
       window.location.reload();
     } catch (e) {
@@ -34,11 +29,7 @@ export default function OtherUser({ setCurUser }) {
         user_id: cookies["UserId"],
         clicked_user_id: user.user_id,
       };
-      const data = await axios.put(
-        `https://codevv.herokuapp.com/users/reject`,
-        {},
-        { params }
-      );
+      const data = await api.rejectUser(params);
       // console.log(data);
       setCurUser(data.data);
       window.location.reload();
@@ -58,9 +49,7 @@ export default function OtherUser({ setCurUser }) {
         user_id: cookies["UserId"],
         requested_id: param.id,
       };
-      const data = await axios.get("https://codevv.herokuapp.com/users/user", {
-        params,
-      });
+      const data = await api.getSelf(params);
       // console.log('here');
       // console.log(data);
 

@@ -2,13 +2,12 @@
 import React, { useState } from "react";
 import person1 from "../img/person1.svg";
 import person2 from "../img/person2.svg";
-import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Oval } from "react-loader-spinner";
-
+import { api } from "../api";
 export default function Signup() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [email, setEmail] = useState("");
@@ -22,10 +21,7 @@ export default function Signup() {
     let data;
     if (password === confPassword) {
       try {
-        data = await axios.post("https://codevv.herokuapp.com/auth/signup", {
-          email: email,
-          password: password,
-        });
+        data = await api.signup(email, password);
         setCookie("AuthToken", data.data.token);
         setCookie("UserId", data.data.userId);
         navigate("/createprofile");
