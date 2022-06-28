@@ -20,4 +20,5 @@ userRouter.get("/reject", userController.getRejectedUsers);
 
 userRouter.put("/unreject", userController.unrejectUser);
 
+userRouter.delete("/delete", userController.deleteUser);
 module.exports = userRouter;

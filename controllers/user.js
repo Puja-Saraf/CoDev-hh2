@@ -345,6 +345,26 @@ const userController = {
       res.status(400).send(e.message);
     }
   },
+  deleteUser: async (req, res) => {
+    const { user_id } = req.query;
+
+    // console.log(req.query);
+    if (!user_id) {
+      res.status(400).send("User id is required");
+      return;
+    }
+    try {
+      const cur_user = await User.findOne({ user_id });
+      if (!cur_user) {
+        res.status(400).send("User not found");
+        return;
+      }
+      await User.deleteOne({ user_id });
+      res.status(200).send("User deleted");
+    } catch (e) {
+      res.status(400).send(e.message);
+    }
+  },
 };
 
 module.exports = userController;
