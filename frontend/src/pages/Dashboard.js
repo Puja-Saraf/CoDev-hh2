@@ -19,7 +19,8 @@ export default function Dashboard({ user, setCurUser }) {
       const data = await api.getAllUsers(params);
 
       if (isSubscribed) {
-        setUsers(data.data);
+        const shuffledUsers=data.data.sort(() => Math.random() - 0.5)
+        setUsers(shuffledUsers);
       }
     };
     fetchData().catch(console.error);
@@ -59,16 +60,23 @@ export default function Dashboard({ user, setCurUser }) {
   // console.log(users)
   if (!users) {
     return (
-      <div className="flex justify-center items-center h-[100vh]">
+      <div className="flex justify-center items-center h-[100vh] bg-[#FFD9C0] bg-opacity-25"
+      style={{backgroundImage: 'url("../img/blob.svg"), url("../img/blob.svg")',
+    backgroundSize:"80% 80%,80% 80%", 
+    backgroundPosition:"-140% 20%, 200% 140%",
+    backgroundRepeat:"no-repeat, no-repeat"}}>
         <Oval color="#fd2f6e" height={80} width={80} />
       </div>
     );
   }
 
-  users.sort(() => Math.random() - 0.5);
 
   return (
-    <div className=" flex flex-col snap-y overflow-y-scroll lg:snap-x snap-mandatory lg:flex-row lg:overflow-x-scroll">
+    <div className="flex flex-col snap-y overflow-y-scroll lg:snap-x snap-mandatory lg:flex-row lg:overflow-x-scroll lg:overflow-y-hidden bg-[#FFD9C0] bg-opacity-25 h-[100vh]"
+    style={{backgroundImage: 'url("../img/blob.svg"), url("../img/blob.svg")',
+    backgroundSize:"80% 80%,80% 80%", 
+    backgroundPosition:"-170% 20%, 210% 120%",
+    backgroundRepeat:"no-repeat, no-repeat"}}>
       {users.map((user, _index) => (
         <ProfileCard
           user={user}
@@ -78,6 +86,7 @@ export default function Dashboard({ user, setCurUser }) {
           handleReject={handleReject}
         />
       ))}
+      {/* <h1>hi</h1> */}
     </div>
   );
 }

@@ -33,6 +33,7 @@ function App() {
         user_id: cookies["UserId"],
         requested_id: cookies["UserId"],
       };
+      if(!params.user_id){return  }
       const data = await api.getSelf(params);
 
       if (isSubscribed) {

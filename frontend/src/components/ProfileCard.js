@@ -14,7 +14,7 @@ export default function ProfileCard({ user, handleMatch, handleReject }) {
 
   return (
     <div className=" snap-start lg:snap-center lg:min-w-[50vw] h-[100vh] flex justify-center items-center lg:ml-20 lg:mr-20">
-      <div className="card bg-white drop-shadow-lg max-w-[360px] lg:max-w-[700px] h-[85vh] lg:h-[60vh] mt-24 lg:mt-0 flex flex-row rounded-3xl">
+      <div className="card bg-white drop-shadow-xl max-w-[360px] lg:max-w-[700px] h-[85vh] lg:h-[60vh] mt-24 lg:mt-0 flex flex-row rounded-3xl">
         <div
           className="card-text flex flex-col lg:grid"
           style={{ gridTemplateColumns: "3fr 5fr" }}
@@ -31,7 +31,7 @@ export default function ProfileCard({ user, handleMatch, handleReject }) {
               style={{ backgroundImage: `url(${user.img_url})` }}
             ></div>
           )}
-          <div className="title-total pt-10 pb-6 pr-6 pl-6">
+          <div className="title-total lg:pt-10 pb-6 pr-4 pl-4">
             <div className="title p-4 text-right text-[#fd2f6e] font-semibold text-lg">
               {user.professional_title}
             </div>
@@ -47,7 +47,7 @@ export default function ProfileCard({ user, handleMatch, handleReject }) {
                 : "years"}
             </h3>
             <div className="desc pt-2 pb-2 pr-4 pl-4 text-sm">{userAbout}</div>
-            <div className="actions flex flex-row justify-center align-center md:mt-4 lg:mt-6">
+            <div className="actions flex flex-row justify-center align-center mt-4 lg:mt-6">
               <button
                 className="bg-[#fe5740] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full mr-4"
                 onClick={() => {
