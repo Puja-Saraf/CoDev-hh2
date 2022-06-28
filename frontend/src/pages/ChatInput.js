@@ -34,15 +34,15 @@ export default function ChatInput({
   };
 
   return (
-    <div className="flex flex-row justify-center mt-7 items-center">
+    <div className="flex flex-row justify-center pt-1 pb-1 items-center bg-white w-[90%] md:w-[60%] rounded-bl-xl rounded-br-xl border-slate-700 border-opacity-20 border-b-2 border-l-2 border-r-2">
       <textarea
         value={textArea}
         onChange={(e) => setTextArea(e.target.value)}
-        className="border-2 border-slate-700 rounded-xl text-base w-56 md:w-96 h-12 resize-none"
+        className="rounded-xl text-sm w-[80%] resize-none focus:outline-none p-2 h-10 border-slate-700 border-opacity-20 border"
       />
       <button
         onClick={addMessage}
-        className="text-white bg-gradient-to-r from-[#fd2f6e] to-[#fe5740] px-2 py-1 md:px-3 md:py-2 m-2 rounded-full font-semibold w-fit text-lg md:text-xl cursor-pointer hover:from-[#FFD9C0] hover:to-[#FFD9C0] hover:text-[#fe5740]"
+        className="text-white bg-gradient-to-r from-[#fd2f6e] to-[#fe5740] px-2 py-1 md:px-3 md:py-2 m-2 rounded-full font-semibold w-fit text-lg md:text-xl cursor-pointer hover:from-[#FFD9C0] hover:to-[#FFD9C0] hover:text-[#fe5740] border-1 border-[#fe5740]"
       >
         <i className="fa-solid fa-paper-plane"></i>
       </button>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ChatInput from "./ChatInput";
 import Chat from "./Chat";
 import { api } from "../api";
+import maleUser from "../img/profuser.svg";
 
 export default function ChatDisplay({ user, clickedUser }) {
   const [userMessages, setUserMessages] = useState(null);
@@ -60,7 +61,17 @@ export default function ChatDisplay({ user, clickedUser }) {
     a.timestamp.localeCompare(b.timestamp)
   );
   return (
-    <div className="h-[80vh] overflow-y-auto w-[100vw] flex flex-col justify-center items-center">
+    <div className="h-[75%] overflow-y-auto w-[100vw] flex flex-col justify-center items-center mt-4">
+      <div className="flex flex-row justify-start items-center w-[90%] md:w-[60%] pt-2 pb-2 rounded-tl-xl rounded-tr-xl bg-white border-slate-700 border-opacity-20 border-2">
+        <img
+          src={clickedUser.img_url ? clickedUser.img_url : maleUser}
+          className="h-12 ml-8 rounded-full"
+        />
+        <div className="ml-5">
+            <h2 className="text-base">{clickedUser.name}</h2>
+            <h4 className=" text-xs opacity-70">{clickedUser.professional_title}</h4>
+          </div>
+      </div>
       <Chat
         descendingOrderMessages={descendingOrderMessages}
         clickedUser={clickedUser}
