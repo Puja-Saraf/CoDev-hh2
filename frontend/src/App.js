@@ -58,7 +58,9 @@ function App() {
             />
           )}
           {user && !user.profile_completed && (
-            <Route path="/profile" element={<Navigate to="/createprofile" />} />
+            <Route 
+              path="/profile" 
+              element={<Navigate to="/createprofile" />} />
           )}
           {user && !user.profile_completed && (
             <Route
@@ -69,6 +71,24 @@ function App() {
           {user && !user.profile_completed && (
             <Route
               path="/profile/:id"
+              element={<Navigate to="/createprofile" />}
+            />
+          )}
+          {user && !user.profile_completed && (
+            <Route
+              path="/chat"
+              element={<Navigate to="/createprofile" />}
+            />
+          )}
+          {user && !user.profile_completed && (
+            <Route
+              path="/pendingusers"
+              element={<Navigate to="/createprofile" />}
+            />
+          )}
+          {user && !user.profile_completed && (
+            <Route
+              path="/rejectedusers"
               element={<Navigate to="/createprofile" />}
             />
           )}
@@ -84,7 +104,7 @@ function App() {
             element={
               <>
                 <Navbar user={user} solid={false} /> {!user && <Signup />}
-                {user && <Navigate to="/dashboard" />}{" "}
+                {user && <Navigate to="/dashboard" />}
               </>
             }
           />
@@ -94,7 +114,7 @@ function App() {
               <>
                 <Navbar user={user} solid={false} />
                 {!user && <Login />}
-                {user && <Navigate to="/dashboard" />}{" "}
+                {user && <Navigate to="/dashboard" />}
               </>
             }
           />
@@ -102,7 +122,8 @@ function App() {
             path="/createprofile"
             element={
               <>
-                <CreateProfile />
+                {user && <CreateProfile />}
+                {!user && <Navigate to='/'/>}
               </>
             }
           />
@@ -110,7 +131,8 @@ function App() {
             path="/editprofile"
             element={
               <>
-                <EditProfile user={user} />
+                {user && <EditProfile user={user} />}
+                {!user && <Navigate to='/'/>}
               </>
             }
           />
@@ -118,8 +140,9 @@ function App() {
             path="/profile"
             element={
               <>
-                <Navbar user={user} solid={true} />
-                <Profile user={user} />
+                {user && <><Navbar user={user} solid={true} />
+                <Profile user={user} /></>}
+                {!user && <Navigate to='/'/>}
               </>
             }
           />
@@ -127,8 +150,9 @@ function App() {
             path="/dashboard"
             element={
               <>
-                <Navbar user={user} solid={true} />
-                <Dashboard user={user} setCurUser={setUser} />
+                {user && <><Navbar user={user} solid={true} />
+                <Dashboard user={user} setCurUser={setUser} /></>}
+                {!user && <Navigate to='/'/>}
               </>
             }
           />
@@ -136,8 +160,9 @@ function App() {
             path="/profile/:id"
             element={
               <>
-                <Navbar user={user} solid={true} />
-                <OtherUser user={user} setCurUser={setUser} />
+                {user && <><Navbar user={user} solid={true} />
+                <OtherUser user={user} setCurUser={setUser} /></>}
+                {!user && <Navigate to='/'/>}
               </>
             }
           />
@@ -145,8 +170,9 @@ function App() {
             path="/chat"
             element={
               <>
-                <Navbar user={user} solid={true} />
-                <ChatContainer user={user} />
+                {user && <><Navbar user={user} solid={true} />
+                <ChatContainer user={user} /></>}
+                {!user && <Navigate to='/'/>}
               </>
             }
           />
@@ -154,8 +180,9 @@ function App() {
             path="/pendingusers"
             element={
               <>
-                <Navbar user={user} solid={true} />
-                <PendingUsers setCurUser={setUser} />
+                {user && <><Navbar user={user} solid={true} />
+                <PendingUsers setCurUser={setUser} /></>}
+                {!user && <Navigate to='/'/>}
               </>
             }
           />
@@ -163,8 +190,9 @@ function App() {
             path="/rejectedusers"
             element={
               <>
-                <Navbar user={user} solid={true} />
-                <RejectedUsers setCurUser={setUser} />
+                {user && <><Navbar user={user} solid={true} />
+                <RejectedUsers setCurUser={setUser} /></>}
+                {!user && <Navigate to='/'/>}
               </>
             }
           />

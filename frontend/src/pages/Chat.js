@@ -21,7 +21,7 @@ export default function Chat({descendingOrderMessages,user}) {
                 
                 <div className='mr-2'>
                   <h2 className='text-xs opacity-70 text-right'>{message.name}</h2>
-                  <h4 className=' text-base text-right pt-1 pb-1 pl-2 pr-2 bg-[#FFD9C0] rounded'>{message.message}</h4>
+                  <h4 className=' text-base text-left pt-1 pb-1 pl-2 pr-2 bg-[#FFD9C0] rounded'>{message.message}</h4>
                 </div>
                 <img src={message.img ? message.img : maleUser} className='h-12 rounded-full' />
             </div>}

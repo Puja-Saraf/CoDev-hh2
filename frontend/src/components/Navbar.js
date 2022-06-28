@@ -69,7 +69,7 @@ export default function Navbar({user,solid}) {
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto justify-center lg:items-center">
               {!user && <li className="nav-item">
                 <Link
-                  className={splitLocation[1] === "signup" ? "px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75 border-b-2 border-[#fd2f6e]":"px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"}
+                  className={splitLocation[1] === "signup" ? "px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#fd2f6e] hover:opacity-75 lg:border-b-2 border-[#fd2f6e]":"px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"}
                   to="/signup"
                   onClick={()=>setNavbarOpen(!navbarOpen)}
                 >
@@ -78,7 +78,7 @@ export default function Navbar({user,solid}) {
               </li>}
               {!user && <li className="nav-item">
                 <Link
-                  className={splitLocation[1] === "login" ? "px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75 border-b-2 border-[#fd2f6e]":"px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"}
+                  className={splitLocation[1] === "login" ? "px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#fd2f6e] hover:opacity-75 lg:border-b-2 border-[#fd2f6e]":"px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"}
                   to="/login"
                   onClick={()=>setNavbarOpen(!navbarOpen)}
                 >Login
@@ -91,8 +91,8 @@ export default function Navbar({user,solid}) {
                   onClick={()=>{
                     setNavbarOpen(!navbarOpen)
                   }}
-                ><i className={splitLocation[1] === "dashboard" ? "fa-solid fa-users text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e] border-b-2 border-[#fd2f6e]" : "fa-solid fa-users text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e]"}></i>
-                <span className='text-left block lg:hidden'>Dashboard</span>
+                ><i className={splitLocation[1] === "dashboard" ? "fa-solid fa-users text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e] lg:border-b-2 border-[#fd2f6e]" : "fa-solid fa-users text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e]"}></i>
+                <span className={splitLocation[1] === "dashboard" ? 'text-left block text-[#fd2f6e] lg:hidden' : 'text-left block lg:hidden'}>Dashboard</span>
                 </Link>
               </li>}
               {user && <li className="nav-item">
@@ -100,8 +100,8 @@ export default function Navbar({user,solid}) {
                   className="px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"
                   to="/chat"
                   onClick={()=>setNavbarOpen(!navbarOpen)}
-                ><i className={splitLocation[1] === "chat" ? "fa-solid fa-comment text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e] border-b-2 border-[#fd2f6e]" : "fa-solid fa-comment text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e]"}></i>
-                <span className='text-left block lg:hidden'>Chat</span>
+                ><i className={splitLocation[1] === "chat" ? "fa-solid fa-comment text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e] lg:border-b-2 border-[#fd2f6e]" : "fa-solid fa-comment text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e]"}></i>
+                <span className={splitLocation[1] === "chat" ? 'text-left block text-[#fd2f6e] lg:hidden' : 'text-left block lg:hidden'}>Chat</span>
                 </Link>
               </li>}
               {user && <li className="nav-item">
@@ -109,8 +109,8 @@ export default function Navbar({user,solid}) {
                   className="px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"
                   to="/rejectedusers"
                   onClick={()=>setNavbarOpen(!navbarOpen)}
-                ><i className={splitLocation[1] === "rejectedusers" ? "fa-solid fa-user-xmark text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e] border-b-2 border-[#fd2f6e]" : "fa-solid fa-user-xmark text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e]"}></i>
-                <span className='text-left block lg:hidden'>Rejected Users</span>
+                ><i className={splitLocation[1] === "rejectedusers" ? "fa-solid fa-user-xmark text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e] lg:border-b-2 border-[#fd2f6e]" : "fa-solid fa-user-xmark text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e]"}></i>
+                <span className={splitLocation[1] === "rejectedusers" ? 'text-left block text-[#fd2f6e] lg:hidden' : 'text-left block lg:hidden'}>Rejected Users</span>
                 </Link>
               </li>}
               {user && <li className="nav-item">
@@ -118,8 +118,8 @@ export default function Navbar({user,solid}) {
                   className="px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"
                   to="/pendingusers"
                   onClick={()=>setNavbarOpen(!navbarOpen)}
-                ><i className={splitLocation[1] === "pendingusers" ? "fa-solid fa-user-clock text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e] border-b-2 border-[#fd2f6e]" : "fa-solid fa-user-clock text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e]"}></i>
-                <span className='text-left block lg:hidden'>Pending Users</span>
+                ><i className={splitLocation[1] === "pendingusers" ? "fa-solid fa-user-clock text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e] lg:border-b-2 border-[#fd2f6e]" : "fa-solid fa-user-clock text-2xl hidden lg:block lg:mr-10 text-[#fd2f6e]"}></i>
+                <span className={splitLocation[1] === "pendingusers" ? 'text-left block text-[#fd2f6e] lg:hidden' : 'text-left block lg:hidden'}>Pending Users</span>
                 </Link>
               </li>}
               {user && <li className="nav-item">
