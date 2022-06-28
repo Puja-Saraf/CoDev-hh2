@@ -38,7 +38,7 @@ export default function Navbar({user,solid}) {
   }
 
   return (
-    <div className='fixed w-full top-0 z-10' ref={ref}>
+    <div className='fixed w-full top-0 z-20' ref={ref}>
 
       <nav className={`relative flex flex-wrap items-center justify-between px-2 py-1 ${opac} shadow-lg md:shadow-md mb-3`}>
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">

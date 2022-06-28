@@ -53,7 +53,7 @@ export default function List({ user, pending, setCurUser }) {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="flex flex-row items-center justify-between h-16 w-[340px] md:w-[420px]">
+      <div className="flex flex-row items-center justify-between h-24 w-[290px] md:h-16 md:w-[420px] bg-white rounded-lg">
         <div
           className="h-[100%] flex flex-row items-center justify-center cursor-pointer ml-4"
           onClick={() => {
@@ -62,7 +62,7 @@ export default function List({ user, pending, setCurUser }) {
         >
           <img
             src={user.img_url ? user.img_url : maleUser}
-            className="h-[70%] rounded-full"
+            className="h-[50%] md:h-[70%] rounded-full"
           />
           <div className="ml-2">
             <h2 className="text-base">{user.name}</h2>
@@ -71,7 +71,7 @@ export default function List({ user, pending, setCurUser }) {
         </div>
         {pending && (
           <button
-            className="bg-[#fd2f6e] pt-1 pb-1 pl-3 pr-3 text-white text-base rounded-full ml-14 mr-2"
+            className="bg-[#fd2f6e] pt-1 pb-1 md:pl-3 md:pr-3 pl-2 pr-2 text-white md:text-base text-sm rounded-full md:ml-24 ml-2 hover:bg-[#FFD9C0] hover:text-[#fd2f6e]"
             onClick={handleMatch}
           >
             Accept
@@ -79,7 +79,7 @@ export default function List({ user, pending, setCurUser }) {
         )}
         {pending && (
           <button
-            className="bg-[#fd2f6e] pt-1 pb-1 pl-3 pr-3 text-white text-base rounded-full"
+            className="bg-[#fd2f6e] pt-1 pb-1 md:pl-3 md:pr-3 pl-2 pr-2 md:mr-4 mr-2 text-white md:text-base text-sm rounded-full hover:bg-[#FFD9C0] hover:text-[#fd2f6e]"
             onClick={handleReject}
           >
             Delete
@@ -87,14 +87,14 @@ export default function List({ user, pending, setCurUser }) {
         )}
         {!pending && (
           <button
-            className="bg-[#fd2f6e] pt-1 pb-1 pl-3 pr-3 text-white text-base rounded-full mr-6"
+            className="bg-[#fd2f6e] pt-1 pb-1 pl-3 pr-3 text-white text-base rounded-full mr-6 hover:bg-[#FFD9C0] hover:text-[#fd2f6e]"
             onClick={handleUnreject}
           >
             Revert
           </button>
         )}
       </div>
-      <div className=" h-[1px] bg-slate-700 mt-2 mb-2 opacity-20 w-[340px] md:w-[420px]"></div>
+      <div className=" h-[1px] bg-slate-700 mt-2 mb-2 opacity-20 w-[290px] md:w-[420px]"></div>
     </div>
   );
 }
