@@ -103,8 +103,8 @@ function App() {
             path="/signup"
             element={
               <>
-                <Navbar user={user} solid={false} /> {!user && <Signup />}
-                {user && <Navigate to="/dashboard" />}
+                <Navbar user={user} solid={false} /> {!cookies["UserId"] && <Signup />}
+                {cookies["UserId"] && <Navigate to="/dashboard" />}
               </>
             }
           />
@@ -113,8 +113,8 @@ function App() {
             element={
               <>
                 <Navbar user={user} solid={false} />
-                {!user && <Login />}
-                {user && <Navigate to="/dashboard" />}
+                {!cookies["UserId"] && <Login />}
+                {cookies["UserId"] && <Navigate to="/dashboard" />}
               </>
             }
           />
@@ -122,8 +122,8 @@ function App() {
             path="/createprofile"
             element={
               <>
-                {user && <CreateProfile />}
-                {!user && <Navigate to='/'/>}
+                {cookies["UserId"] && <CreateProfile />}
+                {!cookies["UserId"] && <Navigate to='/'/>}
               </>
             }
           />
@@ -131,8 +131,8 @@ function App() {
             path="/editprofile"
             element={
               <>
-                {user && <EditProfile user={user} />}
-                {!user && <Navigate to='/'/>}
+                {cookies["UserId"] && <EditProfile user={user} />}
+                {!cookies["UserId"] && <Navigate to='/'/>}
               </>
             }
           />
@@ -140,9 +140,9 @@ function App() {
             path="/profile"
             element={
               <>
-                {user && <><Navbar user={user} solid={true} />
+                {cookies["UserId"] && <><Navbar user={user} solid={true} />
                 <Profile user={user} /></>}
-                {!user && <Navigate to='/'/>}
+                {!cookies["UserId"] && <Navigate to='/'/>}
               </>
             }
           />
@@ -150,9 +150,9 @@ function App() {
             path="/dashboard"
             element={
               <>
-                {user && <><Navbar user={user} solid={true} />
+                {cookies["UserId"] && <><Navbar user={user} solid={true} />
                 <Dashboard user={user} setCurUser={setUser} /></>}
-                {!user && <Navigate to='/'/>}
+                {!cookies["UserId"] && <Navigate to='/'/>}
               </>
             }
           />
@@ -160,9 +160,9 @@ function App() {
             path="/profile/:id"
             element={
               <>
-                {user && <><Navbar user={user} solid={true} />
+                {cookies["UserId"] && <><Navbar user={user} solid={true} />
                 <OtherUser user={user} setCurUser={setUser} /></>}
-                {!user && <Navigate to='/'/>}
+                {!cookies["UserId"] && <Navigate to='/'/>}
               </>
             }
           />
@@ -170,9 +170,9 @@ function App() {
             path="/chat"
             element={
               <>
-                {user && <><Navbar user={user} solid={true} />
+                {cookies["UserId"] && <><Navbar user={user} solid={true} />
                 <ChatContainer user={user} /></>}
-                {!user && <Navigate to='/'/>}
+                {!cookies["UserId"] && <Navigate to='/'/>}
               </>
             }
           />
@@ -180,9 +180,9 @@ function App() {
             path="/pendingusers"
             element={
               <>
-                {user && <><Navbar user={user} solid={true} />
+                {cookies["UserId"] && <><Navbar user={user} solid={true} />
                 <PendingUsers setCurUser={setUser} /></>}
-                {!user && <Navigate to='/'/>}
+                {!cookies["UserId"] && <Navigate to='/'/>}
               </>
             }
           />
@@ -190,9 +190,9 @@ function App() {
             path="/rejectedusers"
             element={
               <>
-                {user && <><Navbar user={user} solid={true} />
+                {cookies["UserId"] && <><Navbar user={user} solid={true} />
                 <RejectedUsers setCurUser={setUser} /></>}
-                {!user && <Navigate to='/'/>}
+                {!cookies["UserId"] && <Navigate to='/'/>}
               </>
             }
           />
