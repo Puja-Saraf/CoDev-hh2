@@ -8,6 +8,10 @@ const { v4: uuidv4 } = require("uuid");
 const authController = {
   login: async (req, res) => {
     const { email, password } = req.body;
+    if (!email || !password) {
+      res.status(401).send("Missing email or password");
+      return;
+    }
 
     try {
       const sanitizedEmail = email.toLowerCase();
@@ -34,6 +38,11 @@ const authController = {
 
   signup: async (req, res) => {
     const { email, password } = req.body;
+    if (!email || !password) {
+      // console.log("here");
+      res.status(409).send("Missing email or password");
+      return;
+    }
     // console.log(email, password);
     const generatedUserId = uuidv4();
     const hashed_password = await bcrypt.hash(password, 10);
@@ -61,6 +70,7 @@ const authController = {
       res.status(201).json({ token, userId: generatedUserId });
     } catch (e) {
       console.log(e);
+      res.status(409).send(e.message);
     }
   },
 };

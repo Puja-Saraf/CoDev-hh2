@@ -49,8 +49,8 @@ Follow the steps below, after cloning the repository:
   - PASSWORD="Your atlas password"
   - USER="your atlas username"
 - Go to frontend/package.json and add the following line:-
-```"proxy":"http://localhost:8000",```
-- Go to frontend/src/api/index.js and change the base url from ```https://codevv.herokuapp.com``` to ```http://localhost:8000``` (at line no. 2)
+  `"proxy":"http://localhost:8000",`
+- Go to frontend/src/api/index.js and change the base url from `https://codevv.herokuapp.com` to `http://localhost:8000` (at line no. 2)
 
 ### ⏳ Installation
 
@@ -101,7 +101,18 @@ Contributions are what make the open source community such an amazing place to b
 6. Open a pull request
 --->
 
-## 👨‍💻 Contributors
+## 👻 Testing
+
+The project includes unit tests for testing all the routes and controllers, written using jest and supertest.
+
+Run all tests
+
+```bash
+npm run test
+```
+
+## 👨‍💻👩‍💻 Contributors
+
 - [Prakhar Jalan](https://www.linkedin.com/in/prakhar-jalan-54aa07201/)
 - [Puja Saraf](https://www.linkedin.com/in/puja-saraf-736325201/)
 
