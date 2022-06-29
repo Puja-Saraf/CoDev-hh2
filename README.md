@@ -118,7 +118,7 @@ npm run test
 ## 👨‍💻👩‍💻 Contributors
 
 - [Prakhar Jalan](https://www.linkedin.com/in/jalansprakhar/)
-- [Puja Saraf](https://www.linkedin.com/in/puja-saraf-736325201/)
+- [Puja Saraf](https://www.linkedin.com/in/pujaa-saraf/)
 
 <br>
 
