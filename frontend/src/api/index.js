@@ -1,5 +1,5 @@
 import axios from "axios";
-const API = axios.create({ baseURL: "https://codevv.herokuapp.com" });
+const API = axios.create({ baseURL: "https://codevv.herokuapp.com/" });
 export const api = {
   login: (email, password) => API.post("/auth/login", { email, password }),
   signup: (email, password) => API.post("/auth/signup", { email, password }),
@@ -15,4 +15,6 @@ export const api = {
   unrejectUser: (params) => API.put("/users/unreject", {}, { params }),
   getMessages: (params) => API.get("/messages", { params }),
   postMessage: (message) => API.put("/messages", { message }),
+  getResume: (params) => API.get("/users/resume", { params }),
+  deleteUser: (params) => API.delete("/users/delete", { params }),
 };

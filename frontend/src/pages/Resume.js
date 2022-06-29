@@ -1,31 +1,43 @@
 /* eslint-disable */
-import React from 'react'
-import maleUser from '../img/profuser.svg'
-import { useCookies } from 'react-cookie';
-import { useNavigate } from 'react-router-dom'
-import { Oval } from  'react-loader-spinner'
+import React, { useEffect, useState } from 'react'
+import { Oval } from 'react-loader-spinner';
+import { useParams } from 'react-router-dom';
 import { api } from '../api';
+import maleUser from '../img/profuser.svg'
 
-export default function Profile({user}) {
-  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+export default function Resume() {
 
-  const navigate=useNavigate();
-  if(!user){
-    return <div className='flex justify-center items-center h-[100vh]'><Oval color="#fd2f6e" height={80} width={80} /></div>
-  }
+    const param = useParams();
 
-  if(user.user_id!==cookies['UserId']){
-    navigate('/')
-  }
-  const deleteAccount=async()=>{
-    const params={
-      user_id:cookies['UserId']
-    }
-    await api.deleteUser(params)
-    removeCookie('UserId');
-    removeCookie('AuthToken');
-    navigate('/');
-    window.location.reload();
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    // console.log('here');
+
+    let isSubscribed = true;
+    const fetchData = async () => {
+      const params = {
+        id: param.id,
+      };
+      const data = await api.getResume(params);
+      // console.log('here');
+      // console.log(data);
+
+      if (isSubscribed) {
+        setUser(data.data);
+      }
+    };
+    fetchData().catch(console.error);
+
+    return () => (isSubscribed = false);
+  }, []);
+
+//   console.log(user);
+  if (!user) {
+    return (
+      <div className="flex justify-center items-center h-[100vh]">
+        <Oval color="#fd2f6e" height={80} width={80} />
+      </div>
+    );
   }
  
   return (
@@ -66,13 +78,6 @@ export default function Profile({user}) {
         <img className='mt-11' src={`https://github-readme-stats.vercel.app/api?username=${user.github_username}&bg_color=fff&border_color=fff&show_icons=true&theme=radical&custom_title=Github%20Stats&icon_color=fd2f6e&text_color=272727`} alt='Github stats' />
         <div className=' h-[2px] bg-slate-700 w-[100%] mt-11 opacity-20'></div>
       </div>}
-      <div className='mt-11 flex flex-row justify-center items-center'>
-        <button className='bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full mr-6' onClick={()=>{navigate('/editprofile')}}>Edit Profile</button>
-        <button className='bg-[#fe5740] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full' onClick={()=>{navigate(`/resume/${user.user_id}`)}}>View Resume</button>
-      </div>
-      <div className='mt-4 flex justify-center items-center mb-14'>
-      <button className='bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full' onClick={deleteAccount} >Delete Account</button>
-      </div>
     </div>
   )
 }

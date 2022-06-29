@@ -365,6 +365,24 @@ const userController = {
       res.status(400).send(e.message);
     }
   },
+
+  getResume: async (req, res) => {
+    try {
+      const { id } = req.query;
+
+      const user = await User.findOne({ user_id: id });
+      // console.log(id);
+      // console.log(user);
+      if (user) {
+        return res.status(200).json(user);
+      } else {
+        res.status(403).send("Please Provide a valid user id");
+      }
+    } catch (e) {
+      res.status(400).send(e.message);
+      console.log(e.message);
+    }
+  },
 };
 
 module.exports = userController;

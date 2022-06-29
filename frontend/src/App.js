@@ -22,6 +22,7 @@ import PendingUsers from "./pages/PendingUsers";
 import RejectedUsers from "./pages/RejectedUsers";
 import ChatContainer from "./pages/ChatContainer";
 import { api } from "./api";
+import Resume from "./pages/Resume";
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [user, setUser] = useState(null);
@@ -193,6 +194,14 @@ function App() {
                 {cookies["UserId"] && <><Navbar user={user} solid={true} />
                 <RejectedUsers setCurUser={setUser} /></>}
                 {!cookies["UserId"] && <Navigate to='/'/>}
+              </>
+            }
+          />
+          <Route
+            path="/resume/:id"
+            element={
+              <>
+                <Resume/>
               </>
             }
           />
