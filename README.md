@@ -4,19 +4,6 @@
 
 ---
 
-<h4 align="center">
-  <a href="##-🤔-What-is-CoDev?">🤔 What is CoDev?</a> |
-  <a href="##-💡Inspiration">💡Inspiration</a> |
-  <a href="##-❓-About-CoDev">❓ About CoDev</a> |
-  <a href="##-🧐-How to Use?">🧐 How to Use?</a> |
-  <a href="##-🎮-Screenshots">🎮 Screenshots</a> |
-  <a href="##-🏁-Getting-Started-(to-run-locally)">🏁 Getting Started</a> |
-  <a href="##-👻-Testing">👻 Testing</a> |
-  <a href="##-👨‍💻👩‍💻-Contributors">👨‍💻👩‍💻 Contributors</a> |
-</h4>
-
----
-
 ## 🤔 What is CoDev?
 
 CoDev is a social media platform wherein the users can register themselves with their email ids and provide us their github id. We will seamlessly fetch all of his github achievements to showcase it on our profile page. We can view the profiles of other amazing developers and **Collaborate** with them to initiate a chat and discuss any thing related to tech or otherwise😉. Tired of seeing the same user again and again? The users can even **Pass** the user and we do make sure to never show his/her profile again unless you change your mind.
