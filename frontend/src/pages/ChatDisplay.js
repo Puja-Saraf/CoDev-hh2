@@ -4,6 +4,7 @@ import ChatInput from "./ChatInput";
 import Chat from "./Chat";
 import { api } from "../api";
 import maleUser from "../img/profuser.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function ChatDisplay({ user, clickedUser }) {
   const [userMessages, setUserMessages] = useState(null);
@@ -60,9 +61,17 @@ export default function ChatDisplay({ user, clickedUser }) {
   const descendingOrderMessages = messages.sort((a, b) =>
     a.timestamp.localeCompare(b.timestamp)
   );
+
+  const navigate=useNavigate();
+
   return (
     <div className="h-[75%] overflow-y-auto w-[100vw] flex flex-col justify-center items-center mt-4">
-      <div className="flex flex-row justify-start items-center w-[90%] md:w-[60%] pt-2 pb-2 rounded-tl-xl rounded-tr-xl bg-white border-slate-700 border-opacity-20 border-2">
+      <div 
+        className="flex flex-row justify-start items-center w-[90%] md:w-[60%] pt-2 pb-2 rounded-tl-xl rounded-tr-xl bg-white border-slate-700 border-opacity-20 border-2 cursor-pointer"
+        onClick={() => {
+          navigate(`/profile/${clickedUser.user_id}`);
+        }}
+      >
         <img
           src={clickedUser.img_url ? clickedUser.img_url : maleUser}
           className="h-12 ml-8 rounded-full"
