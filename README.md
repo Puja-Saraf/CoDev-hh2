@@ -2,6 +2,21 @@
 <h2 align="center">Collaborate with some of the best developers around the world</h2>
 <h3 align="center">Live at https://codevv.herokuapp.com</h3>
 
+---
+
+<h4 align="center">
+  <a href="##-🤔-What-is-CoDev?">🤔 What is CoDev?</a> |
+  <a href="##-💡Inspiration">💡Inspiration</a> |
+  <a href="##-❓-About-CoDev">❓ About CoDev</a> |
+  <a href="##-🧐-How to Use?">🧐 How to Use?</a> |
+  <a href="##-🎮-Screenshots">🎮 Screenshots</a> |
+  <a href="##-🏁-Getting-Started-(to-run-locally)">🏁 Getting Started</a> |
+  <a href="##-👻-Testing">👻 Testing</a> |
+  <a href="##-👨‍💻👩‍💻-Contributors">👨‍💻👩‍💻 Contributors</a> |
+</h4>
+
+---
+
 ## 🤔 What is CoDev?
 
 CoDev is a social media platform wherein the users can register themselves with their email ids and provide us their github id. We will seamlessly fetch all of his github achievements to showcase it on our profile page. We can view the profiles of other amazing developers and **Collaborate** with them to initiate a chat and discuss any thing related to tech or otherwise😉. Tired of seeing the same user again and again? The users can even **Pass** the user and we do make sure to never show his/her profile again unless you change your mind.
@@ -13,6 +28,8 @@ CoDev is a social media platform wherein the users can register themselves with 
 ## ❓ About CoDev
 
 This website was built with [React](https://reactjs.org/), [Express](https://expressjs.com/) and [Node](https://nodejs.org/en/). It also has text chat functionality to communicate with fellow developers!
+
+_**Codev is now a Progressive Web App (PWA), you can add it to your homescreen and it behaves like a mobile app.**_
 
 ## 🧐 How to Use?
 
