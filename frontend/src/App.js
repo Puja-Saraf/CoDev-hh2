@@ -162,7 +162,7 @@ function App() {
             element={
               <>
                 {cookies["UserId"] && <><Navbar user={user} solid={true} />
-                <OtherUser user={user} setCurUser={setUser} /></>}
+                <OtherUser CurUser={user} setCurUser={setUser} /></>}
                 {!cookies["UserId"] && <Navigate to='/'/>}
               </>
             }

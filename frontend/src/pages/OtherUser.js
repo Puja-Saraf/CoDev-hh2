@@ -7,8 +7,10 @@ import { useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
 import { api } from "../api";
 
-export default function OtherUser({ setCurUser }) {
+export default function OtherUser({ CurUser, setCurUser }) {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+  const navigate=useNavigate();
 
   const handleMatch = async () => {
     try {
@@ -37,6 +39,35 @@ export default function OtherUser({ setCurUser }) {
       console.log(e);
     }
   };
+
+  const handleUnMatch = async () => {
+    try {
+      const params = {
+        user_id: cookies["UserId"],
+        clicked_user_id: user.user_id,
+      };
+      const data = await api.rejectUser(params);
+      // console.log(data);
+      setCurUser(data.data);
+      
+      navigate("/chat");
+      window.location.reload();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const deleteAccount=async()=>{
+    const params={
+      user_id:cookies['UserId']
+    }
+    await api.deleteUser(params)
+    removeCookie('UserId');
+    removeCookie('AuthToken');
+    navigate('/');
+    window.location.reload();
+  }
+
   const param = useParams();
 
   const [user, setUser] = useState(null);
@@ -62,6 +93,9 @@ export default function OtherUser({ setCurUser }) {
     return () => (isSubscribed = false);
   }, []);
 
+  console.log(CurUser);
+  console.log(user);
+
   if (!user) {
     return (
       <div className="flex justify-center items-center h-[100vh]">
@@ -69,6 +103,8 @@ export default function OtherUser({ setCurUser }) {
       </div>
     );
   }
+
+  
 
   return (
     <div className=" ml-6 mr-6 md:ml-10 md:mr-10 lg:ml-24 lg:mr-24 xl:ml-32 xl:mr-32 mt-28">
@@ -167,7 +203,23 @@ export default function OtherUser({ setCurUser }) {
           <div className=" h-[2px] bg-slate-700 w-[100%] mt-11 opacity-20"></div>
         </div>
       )}
-      <div className="mt-11 flex flex-row justify-center items-center mb-14">
+      {user?.user_id===CurUser?.user_id && <><div className="mt-11 flex flex-row justify-center items-center">
+        <button
+          className="bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full mr-6"
+          onClick={()=>{navigate('/editprofile')}}
+        >
+          Edit Profile
+        </button>
+        <button 
+          className='bg-[#fe5740] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full' 
+          onClick={()=>{navigate(`/resume/${CurUser.user_id}`)}}>View Resume
+        </button>
+      </div>
+      <div className='mt-4 flex justify-center items-center mb-14'>
+      <button className='bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full' onClick={deleteAccount} >Delete Account</button>
+      </div>
+      </>}
+      {user?.user_id!==CurUser?.user_id && !CurUser?.matches.includes(user.user_id) && <div className="mt-11 flex flex-row justify-center items-center mb-14">
         <button
           className="bg-[#fe5740] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full mr-6"
           onClick={handleReject}
@@ -180,7 +232,16 @@ export default function OtherUser({ setCurUser }) {
         >
           Collaborate
         </button>
-      </div>
+      </div>}
+
+      {user?.user_id!==CurUser?.user_id && CurUser?.matches.includes(user.user_id) && <div className="mt-11 flex flex-row justify-center items-center mb-14">
+        <button
+          className="bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full"
+          onClick={handleUnMatch}
+        >
+          Unmatch
+        </button>
+      </div>}
     </div>
   );
 }

@@ -45,14 +45,14 @@ export default function MatchesDisplay({ setClickedUser }) {
         <div className="flex flex-col items-center justify-center" key={_index}>
           <div className="flex flex-row items-center justify-between h-24 w-[290px] md:h-16 md:w-[420px] bg-white rounded-lg">
             <div
-              className="h-[100%] flex flex-row items-center justify-center cursor-pointer ml-4"
-              onClick={() => {
-                navigate(`/profile/${user.user_id}`);
-              }}
+              className="h-[100%] flex flex-row items-center justify-center ml-4"
             >
               <img
                 src={user.img_url ? user.img_url : maleUser}
-                className="h-[50%] md:h-[70%] rounded-full"
+                className="h-[50%] md:h-[70%] rounded-full cursor-pointer"
+                onClick={() => {
+                  navigate(`/profile/${user.user_id}`);
+                }}
               />
               <div className="ml-2">
                 <h2 className="text-base">{user.name}</h2>
@@ -60,7 +60,7 @@ export default function MatchesDisplay({ setClickedUser }) {
               </div>
             </div>
             <i
-              className="fa-regular fa-comment text-2xl mr-6 opacity-20 cursor-pointer"
+              className="fa-regular fa-comment text-2xl mr-6 opacity-30 cursor-pointer hover:text-[#fd2f6e] hover:opacity-80"
               onClick={() => {
                 setClickedUser(user);
               }}
