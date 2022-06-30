@@ -35,7 +35,7 @@ _**Codev is now a Progressive Web App (PWA), you can add it to your homescreen a
 
 <img src="screenshots/Screenshot-4.png" alt="Screenshot 4" width="75%" align="center" /><br/>
 
-<img src="screenshots/Screenshot-5.jpg" alt="Screenshot 5" width="75%" align="center" /><br/>
+<img src="screenshots/Screenshot-5.png" alt="Screenshot 5" width="75%" align="center" /><br/>
 
 ## 🏁 Getting Started (to run locally)
 

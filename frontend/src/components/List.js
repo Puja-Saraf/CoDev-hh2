@@ -69,9 +69,10 @@ export default function List({ user, pending, setCurUser }) {
             <h4 className=" text-xs opacity-70">{user.professional_title}</h4>
           </div>
         </div>
+        <div className="justify-end">
         {pending && (
           <button
-            className="bg-[#fd2f6e] pt-1 pb-1 md:pl-3 md:pr-3 pl-2 pr-2 text-white md:text-base text-sm rounded-full md:ml-24 ml-2 hover:bg-[#FFD9C0] hover:text-[#fd2f6e]"
+            className="bg-[#fd2f6e] pt-1 pb-1 md:pl-3 md:pr-3 pl-2 pr-2 text-white md:text-base text-xs rounded-full mr-1 hover:bg-[#FFD9C0] hover:text-[#fd2f6e]"
             onClick={handleMatch}
           >
             Accept
@@ -79,7 +80,7 @@ export default function List({ user, pending, setCurUser }) {
         )}
         {pending && (
           <button
-            className="bg-[#fd2f6e] pt-1 pb-1 md:pl-3 md:pr-3 pl-2 pr-2 md:mr-4 mr-2 text-white md:text-base text-sm rounded-full hover:bg-[#FFD9C0] hover:text-[#fd2f6e]"
+            className="bg-[#fd2f6e] pt-1 pb-1 md:pl-3 md:pr-3 pl-2 pr-2 md:mr-4 mr-2 text-white md:text-base text-xs rounded-full hover:bg-[#FFD9C0] hover:text-[#fd2f6e]"
             onClick={handleReject}
           >
             Delete
@@ -93,6 +94,7 @@ export default function List({ user, pending, setCurUser }) {
             Revert
           </button>
         )}
+        </div>
       </div>
       <div className=" h-[1px] bg-slate-700 mt-2 mb-2 opacity-20 w-[290px] md:w-[420px]"></div>
     </div>

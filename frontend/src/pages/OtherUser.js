@@ -93,8 +93,8 @@ export default function OtherUser({ CurUser, setCurUser }) {
     return () => (isSubscribed = false);
   }, []);
 
-  console.log(CurUser);
-  console.log(user);
+  // console.log(CurUser);
+  // console.log(user);
 
   if (!user) {
     return (
