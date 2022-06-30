@@ -253,6 +253,30 @@ const userController = {
   rejectUser: async (req, res) => {
     const { user_id, clicked_user_id } = req.query;
     try {
+      const req_user = await User.findOne({ user_id: clicked_user_id });
+      const query = {
+        $and: [
+          {
+            user_id: clicked_user_id,
+          },
+          {
+            user_id: {
+              $in: req_user.pendingRequests,
+            },
+          },
+        ],
+      };
+      const that_user = User.findOne(query);
+      if (that_user) {
+        await User.updateOne(
+          { user_id: clicked_user_id },
+          {
+            $pull: {
+              pendingRequests: user_id,
+            },
+          }
+        );
+      }
       await User.updateOne(
         { user_id },
         {
@@ -264,6 +288,7 @@ const userController = {
       const user = await User.findOne({ user_id });
       res.status(201).send(user);
     } catch (e) {
+      console.log(e.message);
       res.status(400).send(e.message);
     }
   },
