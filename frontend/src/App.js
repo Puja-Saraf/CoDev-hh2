@@ -22,6 +22,7 @@ import RejectedUsers from "./pages/RejectedUsers";
 import ChatContainer from "./pages/ChatContainer";
 import { api } from "./api";
 import Resume from "./pages/Resume";
+import SkillBased from "./pages/SkillBased";
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [user, setUser] = useState(null);
@@ -92,6 +93,12 @@ function App() {
               element={<Navigate to="/createprofile" />}
             />
           )}
+          {user && !user.profile_completed && (
+            <Route
+              path="/skillbased"
+              element={<Navigate to="/createprofile" />}
+            />
+          )}
           {user && user.profile_completed && (
             <Route
               path="/createprofile"
@@ -152,6 +159,16 @@ function App() {
               <>
                 {cookies["UserId"] && <><Navbar user={user} solid={true} />
                 <Dashboard user={user} setCurUser={setUser} /></>}
+                {!cookies["UserId"] && <Navigate to='/'/>}
+              </>
+            }
+          />
+          <Route
+            path="/skillbased"
+            element={
+              <>
+                {cookies["UserId"] && <><Navbar user={user} solid={true} />
+                <SkillBased/></>}
                 {!cookies["UserId"] && <Navigate to='/'/>}
               </>
             }
