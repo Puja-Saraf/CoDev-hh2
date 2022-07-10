@@ -253,6 +253,30 @@ const userController = {
   rejectUser: async (req, res) => {
     const { user_id, clicked_user_id } = req.query;
     try {
+      const req_user = await User.findOne({ user_id: clicked_user_id });
+      const query = {
+        $and: [
+          {
+            user_id: clicked_user_id,
+          },
+          {
+            user_id: {
+              $in: req_user.pendingRequests,
+            },
+          },
+        ],
+      };
+      const that_user = User.findOne(query);
+      if (that_user) {
+        await User.updateOne(
+          { user_id: clicked_user_id },
+          {
+            $pull: {
+              pendingRequests: user_id,
+            },
+          }
+        );
+      }
       await User.updateOne(
         { user_id },
         {
@@ -264,6 +288,7 @@ const userController = {
       const user = await User.findOne({ user_id });
       res.status(201).send(user);
     } catch (e) {
+      console.log(e.message);
       res.status(400).send(e.message);
     }
   },
@@ -380,6 +405,63 @@ const userController = {
       }
     } catch (e) {
       res.status(400).send(e.message);
+      console.log(e.message);
+    }
+  },
+  getSkillBasedUser: async (req, res) => {
+    try {
+      const { user_id } = req.query;
+      const { skill_required } = req.query;
+      const curUser = await User.findOne({ user_id });
+      const blocked_users = curUser.block;
+      const matched_users = curUser.matches;
+      const rejected_users = curUser.rejected;
+      const query = {
+        $and: [
+          {
+            user_id: {
+              $ne: user_id,
+            },
+          },
+          {
+            profile_completed: true,
+          },
+          {
+            email_verified: true,
+          },
+          {
+            password: {
+              $exists: true,
+            },
+          },
+          {
+            user_id: {
+              $nin: blocked_users,
+            },
+          },
+
+          {
+            user_id: {
+              $nin: matched_users,
+            },
+          },
+          {
+            user_id: {
+              $nin: rejected_users,
+            },
+          },
+          {
+            skills: {
+              $nin: skill_required,
+            },
+          },
+        ],
+      };
+      const users = await User.find(query).sort({ github_verified: -1 });
+
+      res.status(200).send(users);
+    } catch (e) {
+      res.status(404).send(e.message);
       console.log(e.message);
     }
   },
