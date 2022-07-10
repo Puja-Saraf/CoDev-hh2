@@ -23,4 +23,7 @@ userRouter.put("/unreject", userController.unrejectUser);
 userRouter.delete("/delete", userController.deleteUser);
 
 userRouter.get("/resume", userController.getResume);
+
+userRouter.get("/skillbased", userController.getSkillBasedUser());
+
 module.exports = userRouter;
