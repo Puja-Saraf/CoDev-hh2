@@ -17,4 +17,5 @@ export const api = {
   postMessage: (message) => API.put("/messages", { message }),
   getResume: (params) => API.get("/users/resume", { params }),
   deleteUser: (params) => API.delete("/users/delete", { params }),
+  // getSkillBasedUsers: (params)=>API.get("/users/skillbased",{params}),
 };

@@ -412,10 +412,13 @@ const userController = {
     try {
       const { user_id } = req.query;
       const { skill_required } = req.query;
+      // console.log(user_id);
+      // console.log(skill_required)
       const curUser = await User.findOne({ user_id });
       const blocked_users = curUser.block;
       const matched_users = curUser.matches;
       const rejected_users = curUser.rejected;
+      // console.log(curUser);
       const query = {
         $and: [
           {
@@ -450,14 +453,11 @@ const userController = {
               $nin: rejected_users,
             },
           },
-          {
-            skills: {
-              $nin: skill_required,
-            },
-          },
+          
         ],
       };
       const users = await User.find(query).sort({ github_verified: -1 });
+      console.log(users);
 
       res.status(200).send(users);
     } catch (e) {

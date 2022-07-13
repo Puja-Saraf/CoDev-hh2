@@ -93,12 +93,12 @@ function App() {
               element={<Navigate to="/createprofile" />}
             />
           )}
-          {user && !user.profile_completed && (
+          {/* {user && !user.profile_completed && (
             <Route
               path="/skillbased"
               element={<Navigate to="/createprofile" />}
             />
-          )}
+          )} */}
           {user && user.profile_completed && (
             <Route
               path="/createprofile"
@@ -163,7 +163,7 @@ function App() {
               </>
             }
           />
-          <Route
+          {/* <Route
             path="/skillbased"
             element={
               <>
@@ -172,7 +172,7 @@ function App() {
                 {!cookies["UserId"] && <Navigate to='/'/>}
               </>
             }
-          />
+          /> */}
           <Route
             path="/profile/:id"
             element={

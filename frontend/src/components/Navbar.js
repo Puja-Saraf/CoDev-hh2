@@ -5,6 +5,7 @@ import logo from '../img/logo.svg'
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import maleUser from '../img/profuser.svg'
+// import skillbase_img from '../img/skillbased.svg';
 
 export default function Navbar({user,solid}) {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -95,6 +96,17 @@ export default function Navbar({user,solid}) {
                 <span className={splitLocation[1] === "dashboard" ? 'text-left block text-[#fd2f6e] lg:hidden' : 'text-left block lg:hidden'}>Dashboard</span>
                 </Link>
               </li>}
+              {/* {user && <li className="nav-item">
+                <Link
+                  className="px-3 py-2 flex items-center text-lg font-semibold leading-snug hover:opacity-75"
+                  to="/skillbased"
+                  onClick={()=>{
+                    setNavbarOpen(!navbarOpen)
+                  }}
+                ><img src={skillbase_img} className={splitLocation[1] === "skillbased" ? "h-[34px] hidden lg:block lg:mr-10 text-[#fd2f6e] lg:border-b-2 border-[#fd2f6e]" : "h-[34px] hidden lg:block lg:mr-10 text-[#fd2f6e]"}/>
+                <span className={splitLocation[1] === "skillbased" ? 'text-left block text-[#fd2f6e] lg:hidden' : 'text-left block lg:hidden'}>Skillbased Users</span>
+                </Link>
+              </li>} */}
               {user && <li className="nav-item">
                 <Link
                   className="px-3 py-2 flex items-center text-lg font-semibold leading-snug text-[#2f2e41] hover:opacity-75"
