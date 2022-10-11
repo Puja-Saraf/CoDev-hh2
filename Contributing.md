@@ -1,6 +1,6 @@
 ## 🤝 Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated. The *Issues* tab is a good place to begin!
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated. The *Issues* tab is a good place to begin!
 
 1. Fork the project repo
 2. Clone the forked repo on your machine
