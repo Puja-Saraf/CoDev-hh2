@@ -19,7 +19,7 @@ export default function Dashboard({ user, setCurUser }) {
       const data = await api.getAllUsers(params);
 
       if (isSubscribed) {
-        const shuffledUsers=data.data.sort(() => Math.random() - 0.5)
+        const shuffledUsers = data.data.sort(() => Math.random() - 0.5);
         setUsers(shuffledUsers);
       }
     };
@@ -60,23 +60,30 @@ export default function Dashboard({ user, setCurUser }) {
   // console.log(users)
   if (!users) {
     return (
-      <div className="flex justify-center items-center h-[100vh] bg-[#FFD9C0] bg-opacity-25"
-      style={{backgroundImage: 'url("../img/blob.svg"), url("../img/blob.svg")',
-    backgroundSize:"80% 80%,70% 70%", 
-    backgroundPosition:"-140% 20%, 200% 100%",
-    backgroundRepeat:"no-repeat, no-repeat"}}>
+      <div
+        className="flex justify-center items-center h-[100vh] bg-[#FFD9C0] bg-opacity-25"
+        style={{
+          backgroundImage: 'url("../img/blob.svg"), url("../img/blob.svg")',
+          backgroundSize: "80% 80%,70% 70%",
+          backgroundPosition: "-140% 20%, 200% 100%",
+          backgroundRepeat: "no-repeat, no-repeat",
+        }}
+      >
         <Oval color="#fd2f6e" height={80} width={80} />
       </div>
     );
   }
 
-
   return (
-    <div className="flex flex-col snap-y overflow-y-auto lg:snap-x snap-mandatory lg:flex-row lg:overflow-x-auto lg:overflow-y-hidden bg-[#FFD9C0] bg-opacity-25 h-[100vh] pb-10 lg:pb-0"
-    style={{backgroundImage: 'url("../img/blob.svg"), url("../img/blob.svg")',
-    backgroundSize:"80% 80%,70% 70%", 
-    backgroundPosition:"-170% -70%, 190% 110%",
-    backgroundRepeat:"no-repeat, no-repeat"}}>
+    <div
+      className="flex flex-col snap-y overflow-y-auto lg:snap-x snap-mandatory lg:flex-row lg:overflow-x-auto lg:overflow-y-hidden bg-[#FFD9C0] bg-opacity-25 h-[100vh] pb-10 lg:pb-0"
+      style={{
+        backgroundImage: 'url("../img/blob.svg"), url("../img/blob.svg")',
+        backgroundSize: "80% 80%,70% 70%",
+        backgroundPosition: "-170% -70%, 190% 110%",
+        backgroundRepeat: "no-repeat, no-repeat",
+      }}
+    >
       {users.map((user, _index) => (
         <ProfileCard
           user={user}

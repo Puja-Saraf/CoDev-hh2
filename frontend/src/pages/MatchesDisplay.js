@@ -32,11 +32,11 @@ export default function MatchesDisplay({ setClickedUser }) {
   }, []);
   //   console.log(users);
   if (!users) {
-    return(
+    return (
       <div className="flex justify-center items-center h-[75%]">
         <Oval color="#fd2f6e" height={80} width={80} />
       </div>
-    )
+    );
   }
 
   return (
@@ -44,9 +44,7 @@ export default function MatchesDisplay({ setClickedUser }) {
       {users.map((user, _index) => (
         <div className="flex flex-col items-center justify-center" key={_index}>
           <div className="flex flex-row items-center justify-between h-24 w-[290px] md:h-16 md:w-[420px] bg-white rounded-lg">
-            <div
-              className="h-[100%] flex flex-row items-center justify-center ml-4"
-            >
+            <div className="h-[100%] flex flex-row items-center justify-center ml-4">
               <img
                 src={user.img_url ? user.img_url : maleUser}
                 className="h-[50%] md:h-[70%] rounded-full cursor-pointer"
@@ -56,7 +54,9 @@ export default function MatchesDisplay({ setClickedUser }) {
               />
               <div className="ml-2">
                 <h2 className="text-base">{user.name}</h2>
-                <h4 className=" text-xs opacity-70">{user.professional_title}</h4>
+                <h4 className=" text-xs opacity-70">
+                  {user.professional_title}
+                </h4>
               </div>
             </div>
             <i
