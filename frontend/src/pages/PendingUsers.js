@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { Oval } from "react-loader-spinner";
 import { api } from "../api";
 import List from "../components/List";
-import pendingImg from '../img/pending_users.svg'
+import pendingImg from "../img/pending_users.svg";
 
 export default function PendingUsers({ setCurUser }) {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -41,13 +41,13 @@ export default function PendingUsers({ setCurUser }) {
 
   // console.log(users);
 
-  if(users.length===0){
+  if (users.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center bg-[#FFD9C0] bg-opacity-25 h-[100vh]">
-        <img src={pendingImg} className='w-96' alt='pending_image' />
+        <img src={pendingImg} className="w-96" alt="pending_image" />
         <p className="text-xl mt-8 text-center">No Pending Requests Found..</p>
       </div>
-    )
+    );
   }
 
   return (
@@ -56,14 +56,14 @@ export default function PendingUsers({ setCurUser }) {
         Pending Requests
       </div>
       <div className="relative mt-[9.4rem]">
-      {users.map((user, _index) => (
-        <List
-          user={user}
-          key={_index}
-          pending={true}
-          setCurUser={setCurUser}
-        />
-      ))}
+        {users.map((user, _index) => (
+          <List
+            user={user}
+            key={_index}
+            pending={true}
+            setCurUser={setCurUser}
+          />
+        ))}
       </div>
     </div>
   );

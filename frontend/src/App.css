@@ -1,13 +1,12 @@
 .onboarding form input::-webkit-outer-spin-button,
 .onboarding form input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
-.onboarding form input[type=radio]:checked + label {
+.onboarding form input[type="radio"]:checked + label {
   border: solid 2px #fd2f6e;
   background-color: #ffd9c05d;
 }
-
 
 .check-cont {
   display: block;
@@ -68,7 +67,6 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-
 
 .tooltip .tooltiptext {
   visibility: hidden;

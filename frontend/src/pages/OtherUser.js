@@ -10,7 +10,7 @@ import { api } from "../api";
 export default function OtherUser({ CurUser, setCurUser }) {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const handleMatch = async () => {
     try {
@@ -49,7 +49,7 @@ export default function OtherUser({ CurUser, setCurUser }) {
       const data = await api.rejectUser(params);
       // console.log(data);
       setCurUser(data.data);
-      
+
       navigate("/chat");
       window.location.reload();
     } catch (e) {
@@ -57,16 +57,16 @@ export default function OtherUser({ CurUser, setCurUser }) {
     }
   };
 
-  const deleteAccount=async()=>{
-    const params={
-      user_id:cookies['UserId']
-    }
-    await api.deleteUser(params)
-    removeCookie('UserId');
-    removeCookie('AuthToken');
-    navigate('/');
+  const deleteAccount = async () => {
+    const params = {
+      user_id: cookies["UserId"],
+    };
+    await api.deleteUser(params);
+    removeCookie("UserId");
+    removeCookie("AuthToken");
+    navigate("/");
     window.location.reload();
-  }
+  };
 
   const param = useParams();
 
@@ -104,8 +104,6 @@ export default function OtherUser({ CurUser, setCurUser }) {
     );
   }
 
-  
-
   return (
     <div className=" ml-6 mr-6 md:ml-10 md:mr-10 lg:ml-24 lg:mr-24 xl:ml-32 xl:mr-32 mt-28">
       <div className="flex flex-col md:flex-row justify-center items-center">
@@ -136,7 +134,7 @@ export default function OtherUser({ CurUser, setCurUser }) {
                     <a
                       className="text-xl lg:text-2xl ml-3"
                       href={`https://github.com/${user.github_username}`}
-                      target='_blank'
+                      target="_blank"
                     >
                       <i className="fa-brands fa-github text-[#fd2f6e]"></i>
                     </a>
@@ -203,45 +201,65 @@ export default function OtherUser({ CurUser, setCurUser }) {
           <div className=" h-[2px] bg-slate-700 w-[100%] mt-11 opacity-20"></div>
         </div>
       )}
-      {user?.user_id===CurUser?.user_id && <><div className="mt-11 flex flex-row justify-center items-center">
-        <button
-          className="bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full mr-6"
-          onClick={()=>{navigate('/editprofile')}}
-        >
-          Edit Profile
-        </button>
-        <button 
-          className='bg-[#fe5740] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full' 
-          onClick={()=>{navigate(`/resume/${CurUser.user_id}`)}}>View Resume
-        </button>
-      </div>
-      <div className='mt-4 flex justify-center items-center mb-14'>
-      <button className='bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full' onClick={deleteAccount} >Delete Account</button>
-      </div>
-      </>}
-      {user?.user_id!==CurUser?.user_id && !CurUser?.matches.includes(user.user_id) && <div className="mt-11 flex flex-row justify-center items-center mb-14">
-        <button
-          className="bg-[#fe5740] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full mr-6"
-          onClick={handleReject}
-        >
-          Pass
-        </button>
-        <button
-          className="bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full"
-          onClick={handleMatch}
-        >
-          Collaborate
-        </button>
-      </div>}
+      {user?.user_id === CurUser?.user_id && (
+        <>
+          <div className="mt-11 flex flex-row justify-center items-center">
+            <button
+              className="bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full mr-6"
+              onClick={() => {
+                navigate("/editprofile");
+              }}
+            >
+              Edit Profile
+            </button>
+            <button
+              className="bg-[#fe5740] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full"
+              onClick={() => {
+                navigate(`/resume/${CurUser.user_id}`);
+              }}
+            >
+              View Resume
+            </button>
+          </div>
+          <div className="mt-4 flex justify-center items-center mb-14">
+            <button
+              className="bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full"
+              onClick={deleteAccount}
+            >
+              Delete Account
+            </button>
+          </div>
+        </>
+      )}
+      {user?.user_id !== CurUser?.user_id &&
+        !CurUser?.matches.includes(user.user_id) && (
+          <div className="mt-11 flex flex-row justify-center items-center mb-14">
+            <button
+              className="bg-[#fe5740] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full mr-6"
+              onClick={handleReject}
+            >
+              Pass
+            </button>
+            <button
+              className="bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full"
+              onClick={handleMatch}
+            >
+              Collaborate
+            </button>
+          </div>
+        )}
 
-      {user?.user_id!==CurUser?.user_id && CurUser?.matches.includes(user.user_id) && <div className="mt-11 flex flex-row justify-center items-center mb-14">
-        <button
-          className="bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full"
-          onClick={handleUnMatch}
-        >
-          Unmatch
-        </button>
-      </div>}
+      {user?.user_id !== CurUser?.user_id &&
+        CurUser?.matches.includes(user.user_id) && (
+          <div className="mt-11 flex flex-row justify-center items-center mb-14">
+            <button
+              className="bg-[#fd2f6e] pt-2 pb-2 pl-4 pr-4 text-white text-lg rounded-full"
+              onClick={handleUnMatch}
+            >
+              Unmatch
+            </button>
+          </div>
+        )}
     </div>
   );
 }

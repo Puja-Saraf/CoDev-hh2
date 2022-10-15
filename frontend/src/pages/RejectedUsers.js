@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import { Oval } from "react-loader-spinner";
 import { api } from "../api";
 import List from "../components/List";
-import rejected from '../img/rejected_users.svg'
+import rejected from "../img/rejected_users.svg";
 
 export default function RejectedUsers({ setCurUser }) {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -41,13 +41,13 @@ export default function RejectedUsers({ setCurUser }) {
 
   // console.log(users);
 
-  if(users.length===0){
+  if (users.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center bg-[#FFD9C0] bg-opacity-25 h-[100vh]">
-        <img src={rejected} className='w-60' alt='rejected_image' />
+        <img src={rejected} className="w-60" alt="rejected_image" />
         <p className="text-xl mt-8 text-center">No Rejected Users Found..</p>
       </div>
-    )
+    );
   }
 
   return (
@@ -56,14 +56,14 @@ export default function RejectedUsers({ setCurUser }) {
         Rejected Users
       </div>
       <div className="relative mt-[9.4rem]">
-      {users.map((user, _index) => (
-        <List
-          user={user}
-          key={_index}
-          pending={false}
-          setCurUser={setCurUser}
-        />
-      ))}
+        {users.map((user, _index) => (
+          <List
+            user={user}
+            key={_index}
+            pending={false}
+            setCurUser={setCurUser}
+          />
+        ))}
       </div>
     </div>
   );
