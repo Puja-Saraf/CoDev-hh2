@@ -1,6 +1,7 @@
 /* eslint-disable */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { api } from "../api";
+import socketIOClient from "socket.io-client";
 
 export default function ChatInput({
   user,
@@ -11,6 +12,15 @@ export default function ChatInput({
   const [textArea, setTextArea] = useState("");
   const userId = user?.user_id;
   const clickUserId = clickedUser?.user_id;
+
+  const socket = socketIOClient('http://localhost:8080'); 
+
+  socket.on("receivedMessage", data => {
+    console.log(data);
+    getUserMessages();
+    getClickedUserMessages();
+  });
+
 
   const addMessage = async () => {
     if (textArea.trim().length === 0) {
@@ -25,6 +35,7 @@ export default function ChatInput({
 
     try {
       await api.postMessage(message);
+      socket.emit('sendMessage', {msg: message});
       getUserMessages();
       getClickedUserMessages();
       setTextArea("");
