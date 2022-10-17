@@ -1,7 +1,8 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
 import { api } from "../api";
-import socketIOClient from "socket.io-client";
+//import socketIOClient from "socket.io-client";
+import io from "socket.io-client";
 import { set } from "mongoose";
 
 export default function ChatInput({
@@ -13,31 +14,43 @@ export default function ChatInput({
 }) {
   const [textArea, setTextArea] = useState("");
   const [msg, setMsg] = useState("");
+  const [socket, setSocket] = useState(null);
   const userId = user?.user_id;
   const clickUserId = clickedUser?.user_id;
 
-  let socket = null;
-  useEffect( () => {
-    socket = socketIOClient('http://localhost:8080'); 
+   // establish socket connection
+   useEffect(() => {
+    setSocket(io('http://localhost:8080'));
+  }, []);
+
+  // subscribe to the socket event
+  useEffect(() => {
+    if (!socket) return;
+ 
+    socket.on('connect', () => {
+      //setSocketConnected(socket.connected);
+      //subscribeToDateEvent();
+    });
+    socket.on('disconnect', () => {
+      //setSocketConnected(socket.connected);
+    });
+ 
     socket.on("receivedMessage", data => {
       console.log(data);
-      updateMessage(data);
+      getClickedUserMessages();
     });
 
-    if(msg.length > 0){
-      const ms = {
-        timestamp: new Date().toISOString(),
-        from_userId: userId,
-        to_userId: clickUserId,
-        message_data: msg,
-      };
-      socket.emit('sendMessage', {msg: ms});
-    }
-  }, [msg]);
-
-  const upd = () => {
-    setMsg(textArea);
-  }
+    // if(textArea.length > 0){
+    //   const ms = {
+    //     timestamp: new Date().toISOString(),
+    //     from_userId: userId,
+    //     to_userId: clickUserId,
+    //     message_data: textArea,
+    //   };
+    //   socket.emit('sendMessage', {msg: ms});
+    // }
+ 
+  }, [socket, textArea]);
 
 
   const addMessage = async () => {
@@ -53,11 +66,10 @@ export default function ChatInput({
 
     try {
       await api.postMessage(message);
-      upd();
+      socket.emit('sendMessage', {msg: message});
       getUserMessages();
       getClickedUserMessages();
       setTextArea("");
-      setMsg("");
     } catch (e) {
       console.log(e);
     }
