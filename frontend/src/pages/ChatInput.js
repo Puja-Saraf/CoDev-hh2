@@ -2,24 +2,42 @@
 import React, { useState, useEffect } from "react";
 import { api } from "../api";
 import socketIOClient from "socket.io-client";
+import { set } from "mongoose";
 
 export default function ChatInput({
   user,
   clickedUser,
   getUserMessages,
+  updateMessage,
   getClickedUserMessages,
 }) {
   const [textArea, setTextArea] = useState("");
+  const [msg, setMsg] = useState("");
   const userId = user?.user_id;
   const clickUserId = clickedUser?.user_id;
 
-  const socket = socketIOClient('http://localhost:8080'); 
+  let socket = null;
+  useEffect( () => {
+    socket = socketIOClient('http://localhost:8080'); 
+    socket.on("receivedMessage", data => {
+      console.log(data);
+      updateMessage(data);
+    });
 
-  socket.on("receivedMessage", data => {
-    console.log(data);
-    getUserMessages();
-    getClickedUserMessages();
-  });
+    if(msg.length > 0){
+      const ms = {
+        timestamp: new Date().toISOString(),
+        from_userId: userId,
+        to_userId: clickUserId,
+        message_data: msg,
+      };
+      socket.emit('sendMessage', {msg: ms});
+    }
+  }, [msg]);
+
+  const upd = () => {
+    setMsg(textArea);
+  }
 
 
   const addMessage = async () => {
@@ -35,10 +53,11 @@ export default function ChatInput({
 
     try {
       await api.postMessage(message);
-      socket.emit('sendMessage', {msg: message});
+      upd();
       getUserMessages();
       getClickedUserMessages();
       setTextArea("");
+      setMsg("");
     } catch (e) {
       console.log(e);
     }
