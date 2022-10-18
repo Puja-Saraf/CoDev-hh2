@@ -40,14 +40,6 @@ export default function ChatDisplay({ user, clickedUser }) {
     getClickedUserMessages();
   }, []);
 
-  const updateMessage = (msg) => {
-    if(!userMessages) {
-      setUserMessages([msg]);
-    } else {
-      userMessages.push(msg);
-      setUserMessages([...userMessages, msg]);
-    }
-  }
   const messages = [];
   userMessages?.forEach((message) => {
     const formattedMessage = {};
