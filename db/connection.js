@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const url ='mongodb+srv://deathsurgeon:Password1!@cluster0.s5guj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const url = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.22yof.mongodb.net/?retryWrites=true&w=majority`
 mongoose
   .connect(url)
   .then(() => {

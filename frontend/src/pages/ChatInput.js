@@ -9,11 +9,9 @@ export default function ChatInput({
   user,
   clickedUser,
   getUserMessages,
-  updateMessage,
   getClickedUserMessages,
 }) {
   const [textArea, setTextArea] = useState("");
-  const [msg, setMsg] = useState("");
   const [socket, setSocket] = useState(null);
   const userId = user?.user_id;
   const clickUserId = clickedUser?.user_id;
@@ -28,27 +26,16 @@ export default function ChatInput({
     if (!socket) return;
  
     socket.on('connect', () => {
-      //setSocketConnected(socket.connected);
-      //subscribeToDateEvent();
+
     });
     socket.on('disconnect', () => {
-      //setSocketConnected(socket.connected);
+
     });
  
     socket.on("receivedMessage", data => {
       console.log(data);
       getClickedUserMessages();
     });
-
-    // if(textArea.length > 0){
-    //   const ms = {
-    //     timestamp: new Date().toISOString(),
-    //     from_userId: userId,
-    //     to_userId: clickUserId,
-    //     message_data: textArea,
-    //   };
-    //   socket.emit('sendMessage', {msg: ms});
-    // }
  
   }, [socket, textArea]);
 

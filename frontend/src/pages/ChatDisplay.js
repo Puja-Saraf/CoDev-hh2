@@ -101,7 +101,6 @@ export default function ChatDisplay({ user, clickedUser }) {
         user={user}
         clickedUser={clickedUser}
         getUserMessages={getUserMessages}
-        updateMessage={updateMessage}
         getClickedUserMessages={getClickedUserMessages}
       />
     </div>
