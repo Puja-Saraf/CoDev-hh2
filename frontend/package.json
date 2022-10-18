@@ -19,7 +19,6 @@
     "react-stomp": "^5.1.0",
     "react-toastify": "^9.0.5",
     "socket.io-client": "^4.5.3",
-    "sockjs-client": "^1.6.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
