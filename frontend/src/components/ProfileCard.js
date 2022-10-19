@@ -46,7 +46,9 @@ export default function ProfileCard({ user, handleMatch, handleReject }) {
                 ? ""
                 : "years"}
             </h3>
-            <div className="desc pt-2 pb-2 pr-4 pl-4 text-sm break-words max-w-[308px] md:max-w-[368px]">{userAbout}</div>
+            <div className="desc pt-2 pb-2 pr-4 pl-4 text-sm break-words max-w-[308px] md:max-w-[368px]">
+              {userAbout}
+            </div>
             <div className="actions flex flex-row justify-center align-center mt-3 lg:mt-6">
               <button
                 className="bg-[#fe5740] pt-2 pb-2 lg:pl-4 lg:pr-4 pl-3 pr-3 text-white lg:text-lg rounded-full lg:mr-4 mr-3 text-base hover:bg-[#FFD9C0] hover:text-[#fe5740]"

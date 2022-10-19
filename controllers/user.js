@@ -453,7 +453,6 @@ const userController = {
               $nin: rejected_users,
             },
           },
-          
         ],
       };
       const users = await User.find(query).sort({ github_verified: -1 });

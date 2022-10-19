@@ -4,6 +4,28 @@ require("./db/connection.js");
 const authRouter = require("./routers/auth.js");
 const userRouter = require("./routers/users.js");
 const app = express();
+const httpServer = require("http").createServer(app);
+const options = {};
+const io = require("socket.io")(httpServer, {
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ["GET", "POST"]
+  }
+});
+
+io.on("connection", socket => {
+  console.log("New client connected");
+  socket.on("disconnect", () => {
+    console.log("Client disconnected");
+  });
+
+  socket.on("sendMessage", (args) => {
+    console.log(args);
+    socket.broadcast.emit("receivedMessage", args);
+  });
+});
+
+httpServer.listen(8080);
 const messageRouter = require("./routers/messages.js");
 
 app.use(cors());

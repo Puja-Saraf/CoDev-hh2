@@ -39,6 +39,7 @@ export default function ChatDisplay({ user, clickedUser }) {
     getUserMessages();
     getClickedUserMessages();
   }, []);
+
   const messages = [];
   userMessages?.forEach((message) => {
     const formattedMessage = {};
@@ -62,11 +63,11 @@ export default function ChatDisplay({ user, clickedUser }) {
     a.timestamp.localeCompare(b.timestamp)
   );
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div className="h-[75%] overflow-y-auto w-[100vw] flex flex-col justify-center items-center mt-4">
-      <div 
+      <div
         className="flex flex-row justify-start items-center w-[90%] md:w-[60%] pt-2 pb-2 rounded-tl-xl rounded-tr-xl bg-white border-slate-700 border-opacity-20 border-2 cursor-pointer"
         onClick={() => {
           navigate(`/profile/${clickedUser.user_id}`);
@@ -77,9 +78,11 @@ export default function ChatDisplay({ user, clickedUser }) {
           className="h-12 ml-8 rounded-full"
         />
         <div className="ml-5">
-            <h2 className="text-base">{clickedUser.name}</h2>
-            <h4 className=" text-xs opacity-70">{clickedUser.professional_title}</h4>
-          </div>
+          <h2 className="text-base">{clickedUser.name}</h2>
+          <h4 className=" text-xs opacity-70">
+            {clickedUser.professional_title}
+          </h4>
+        </div>
       </div>
       <Chat
         descendingOrderMessages={descendingOrderMessages}

@@ -1,6 +1,9 @@
 /* eslint-disable */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { api } from "../api";
+//import socketIOClient from "socket.io-client";
+import io from "socket.io-client";
+import { set } from "mongoose";
 
 export default function ChatInput({
   user,
@@ -9,8 +12,33 @@ export default function ChatInput({
   getClickedUserMessages,
 }) {
   const [textArea, setTextArea] = useState("");
+  const [socket, setSocket] = useState(null);
   const userId = user?.user_id;
   const clickUserId = clickedUser?.user_id;
+
+   // establish socket connection
+   useEffect(() => {
+    setSocket(io('http://localhost:8080'));
+  }, []);
+
+  // subscribe to the socket event
+  useEffect(() => {
+    if (!socket) return;
+ 
+    socket.on('connect', () => {
+
+    });
+    socket.on('disconnect', () => {
+
+    });
+ 
+    socket.on("receivedMessage", data => {
+      console.log(data);
+      getClickedUserMessages();
+    });
+ 
+  }, [socket, textArea]);
+
 
   const addMessage = async () => {
     if (textArea.trim().length === 0) {
@@ -25,6 +53,7 @@ export default function ChatInput({
 
     try {
       await api.postMessage(message);
+      socket.emit('sendMessage', {msg: message});
       getUserMessages();
       getClickedUserMessages();
       setTextArea("");

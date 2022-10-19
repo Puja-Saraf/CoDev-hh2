@@ -70,30 +70,30 @@ export default function List({ user, pending, setCurUser }) {
           </div>
         </div>
         <div className="justify-end">
-        {pending && (
-          <button
-            className="bg-[#fd2f6e] pt-1 pb-1 md:pl-3 md:pr-3 pl-2 pr-2 text-white md:text-base text-xs rounded-full mr-1 hover:bg-[#FFD9C0] hover:text-[#fd2f6e]"
-            onClick={handleMatch}
-          >
-            Accept
-          </button>
-        )}
-        {pending && (
-          <button
-            className="bg-[#fd2f6e] pt-1 pb-1 md:pl-3 md:pr-3 pl-2 pr-2 md:mr-4 mr-2 text-white md:text-base text-xs rounded-full hover:bg-[#FFD9C0] hover:text-[#fd2f6e]"
-            onClick={handleReject}
-          >
-            Delete
-          </button>
-        )}
-        {!pending && (
-          <button
-            className="bg-[#fd2f6e] pt-1 pb-1 pl-3 pr-3 text-white text-base rounded-full mr-6 hover:bg-[#FFD9C0] hover:text-[#fd2f6e]"
-            onClick={handleUnreject}
-          >
-            Revert
-          </button>
-        )}
+          {pending && (
+            <button
+              className="bg-[#fd2f6e] pt-1 pb-1 md:pl-3 md:pr-3 pl-2 pr-2 text-white md:text-base text-xs rounded-full mr-1 hover:bg-[#FFD9C0] hover:text-[#fd2f6e]"
+              onClick={handleMatch}
+            >
+              Accept
+            </button>
+          )}
+          {pending && (
+            <button
+              className="bg-[#fd2f6e] pt-1 pb-1 md:pl-3 md:pr-3 pl-2 pr-2 md:mr-4 mr-2 text-white md:text-base text-xs rounded-full hover:bg-[#FFD9C0] hover:text-[#fd2f6e]"
+              onClick={handleReject}
+            >
+              Delete
+            </button>
+          )}
+          {!pending && (
+            <button
+              className="bg-[#fd2f6e] pt-1 pb-1 pl-3 pr-3 text-white text-base rounded-full mr-6 hover:bg-[#FFD9C0] hover:text-[#fd2f6e]"
+              onClick={handleUnreject}
+            >
+              Revert
+            </button>
+          )}
         </div>
       </div>
       <div className=" h-[1px] bg-slate-700 mt-2 mb-2 opacity-20 w-[290px] md:w-[420px]"></div>
